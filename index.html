@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>the phishing trail</title>
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Survive the corporate work week. Do not click the link.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="THE PHISHING TRAIL">
+<meta property="og:title" content="THE PHISHING TRAIL">
+<meta property="og:description" content="Survive the corporate work week. Do not click the link.">
+<meta property="og:url" content="https://phish.nakfrg.com/">
+<style>
+  @font-face {
+    font-family: 'Pixel';
+    src: url(data:font/woff2;base64,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) format('woff2');
+    font-display: swap;
+  }
+  :root { --line:#fff; --dim:rgba(255,255,255,0.4); --faint:rgba(255,255,255,0.14); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    width:100%; min-height:100%; background:#000; color:#fff;
+    -webkit-user-select:none; user-select:none; -webkit-tap-highlight-color:transparent;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    image-rendering: pixelated;
+  }
+  body { display:flex; flex-direction:column; align-items:center; padding:10px 12px 16px; }
+  .pix { font-family:'Pixel', ui-monospace, monospace; -webkit-font-smoothing:none; font-smooth:never; }
+
+  /* ── thick pixel buttons (same DNA as tamafroggi) ── */
+  .pixbtn {
+    font-family:'Pixel', monospace; font-size:10px; line-height:1.5; letter-spacing:0;
+    color:#fff; text-decoration:none; background:#000; cursor:pointer; text-transform:uppercase;
+    padding:10px 12px 12px; border:0; position:relative; text-align:left;
+    box-shadow:
+      0 -4px 0 0 #fff, 0 4px 0 0 #fff, -4px 0 0 0 #fff, 4px 0 0 0 #fff,
+      0 0 0 4px #fff,
+      0 7px 0 0 rgba(255,255,255,0.25);
+    transition: transform .04s;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .pixbtn:hover { background:#fff; color:#000; outline:none; }
+  }
+  .pixbtn:focus { outline:none; }
+  .pixbtn:active { transform: translateY(3px);
+    box-shadow: 0 -4px 0 0 #fff,0 4px 0 0 #fff,-4px 0 0 0 #fff,4px 0 0 0 #fff,0 0 0 4px #fff; }
+  .pixbtn[disabled] { opacity:.28; pointer-events:none; }
+  .pixbtn.alert { animation: pulse .7s steps(2) infinite; }
+  @keyframes pulse { 50% { background:#fff; color:#000; } }
+  @media (prefers-reduced-motion: reduce){
+    .pixbtn.alert, .stat.low .seg, .blink { animation:none !important; }
+  }
+
+  #app { width:100%; max-width:380px; }
+  .title { text-align:center; font-size:14px; letter-spacing:1px; margin:4px 0 10px; }
+  .subtitle { text-align:center; font-size:8px; letter-spacing:1px; color:var(--dim); margin:-6px 0 10px; }
+
+  #screen { position:relative; width:100%; height:210px; background:#000; overflow:hidden;
+    box-shadow: 0 0 0 3px #fff; margin: 2px 0 12px; }
+  #scene { display:block; width:100%; height:100%; image-rendering:pixelated; }
+  #hud { position:absolute; top:6px; left:8px; right:8px; display:flex; justify-content:space-between;
+    font-family:'Pixel',monospace; font-size:8px; letter-spacing:1px; color:#fff; pointer-events:none; }
+  #screenCaption { position:absolute; bottom:5px; left:50%; transform:translateX(-50%);
+    max-width:94%; text-align:center; white-space:nowrap;
+    font-family:'Pixel',monospace; font-size:8px; letter-spacing:1px; color:var(--dim);
+    background:#000; padding:2px 6px; pointer-events:none; }
+  #screenCaption:empty { display:none; }
+
+  #stats { margin:6px 0 10px; }
+  .stat { display:flex; align-items:center; gap:8px; margin:6px 0; }
+  .stat .lab { width:64px; font-family:'Pixel',monospace; font-size:7px; letter-spacing:1px; color:var(--dim); }
+  .track { flex:1; height:11px; position:relative; box-shadow:0 0 0 2px #fff; background:#000; }
+  .seg { position:absolute; top:0; bottom:0; left:0; background:#fff; width:50%;
+         transition:width .25s steps(10); }
+  .track .val { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Pixel',monospace; font-size:7px; letter-spacing:1px; color:#fff; mix-blend-mode:difference; pointer-events:none; }
+  .stat.low .seg { animation: blinkfill .6s steps(2) infinite; }
+  @keyframes blinkfill { 50% { opacity:.25; } }
+
+  #actionRow { display:flex; gap:16px; margin:14px 2px 6px; }
+  #actionRow .pixbtn { flex:1; text-align:center; }
+  #evInstinct { display:block; margin:12px auto 2px; text-align:center; font-size:9px; }
+  #evInstinct:disabled { opacity:0.5; cursor:default; }
+  #coffeeCups { display:inline-flex; gap:3px; vertical-align:middle; margin-left:5px; }
+  #coffeeCups canvas { image-rendering:pixelated; image-rendering:crisp-edges; }
+
+  /* ── panels ── */
+  .panel { margin:14px 0 6px; }
+  .panelTitle { font-family:'Pixel',monospace; font-size:10px; letter-spacing:1px; margin-bottom:8px; }
+  .panelText { font-family:'Pixel',monospace; font-size:9px; line-height:1.9; letter-spacing:0.5px; color:#fff; }
+  .panelText .dim { color:var(--dim); }
+  .choices { display:flex; flex-direction:column; gap:14px; margin-top:16px; }
+  .choices .pixbtn { width:100%; }
+  .choices .pixbtn .key { color:var(--dim); margin-right:6px; }
+  @media (hover:hover) and (pointer:fine){ .choices .pixbtn:hover .key { color:#000; } }
+
+  .tipBox { margin-top:14px; padding:10px; box-shadow:0 0 0 2px var(--dim);
+    font-family:'Pixel',monospace; font-size:8px; line-height:1.9; letter-spacing:0.5px; color:var(--dim); }
+  .tipBox b { color:#fff; font-weight:normal; }
+
+  .blink { animation: blinkfill .6s steps(2) infinite; }
+
+  /* ── inbox minigame ── */
+  #mailCard { padding:12px; box-shadow:0 0 0 3px #fff; margin:10px 0 4px;
+    font-family:'Pixel',monospace; font-size:9px; line-height:2; letter-spacing:0.5px; min-height:96px; }
+  #mailCard .dim { color:var(--dim); }
+  #mailTimer { height:7px; box-shadow:0 0 0 2px #fff; margin:10px 0 14px; position:relative; background:#000; }
+  #mailTimer .seg { transition:none; }
+  #mailBtns { display:flex; gap:16px; }
+  #mailBtns .pixbtn { flex:1; text-align:center; }
+  #mailScore { font-family:'Pixel',monospace; font-size:8px; letter-spacing:1px; color:var(--dim); margin-top:10px; text-align:center; }
+
+  /* ── setup ── */
+  #nameInput { width:100%; background:#000; color:#fff; border:0; box-shadow:0 0 0 3px #fff;
+    font-family:'Pixel',monospace; font-size:11px; letter-spacing:1px; padding:11px 10px; margin:6px 0 16px;
+    text-transform:uppercase; outline:none; }
+  .roleDesc { font-family:'Pixel',monospace; font-size:8px; color:var(--dim); letter-spacing:0.5px;
+    display:block; margin-top:5px; text-transform:none; }
+  @media (hover:hover) and (pointer:fine){ .choices .pixbtn:hover .roleDesc { color:#000; } }
+
+  /* ── log ── */
+  #logWrap { margin-top:18px; }
+  .logTitle { font-family:'Pixel',monospace; font-size:8px; letter-spacing:1px; color:var(--dim); margin-bottom:6px; }
+  #eventLog { max-height:130px; overflow-y:auto; font-family:'Pixel',monospace; font-size:8px;
+    line-height:2; letter-spacing:0.5px; color:var(--dim); }
+  #eventLog .fresh { color:#fff; }
+
+  #footer { display:flex; flex-wrap:wrap; gap:2px 6px; justify-content:center; margin-top:22px; }
+  .linkbtn { background:none; border:none; color:var(--dim); cursor:pointer; padding:5px;
+             font:10px/1 ui-monospace, monospace; letter-spacing:1px; text-transform:uppercase; text-decoration:none; }
+  .linkbtn:hover { color:#fff; }
+  a, button, .pixbtn, .linkbtn { touch-action: manipulation; }
+
+  .hidden { display:none !important; }
+
+  /* hall of shame */
+  #hallList { font-family:'Pixel',monospace; font-size:8px; line-height:2.1; letter-spacing:0.5px; color:var(--dim); margin-top:8px; }
+  #hallList b { color:#fff; font-weight:normal; }
+</style>
+</head>
+<body>
+  <div id="app">
+    <div class="title pix">THE PHISHING TRAIL</div>
+    <div class="subtitle pix" id="subtitle">SURVIVE THE CORPORATE WORK WEEK</div>
+
+    <div id="screen">
+      <canvas id="scene" width="190" height="105"></canvas>
+      <div id="hud"><span id="hudDay"></span><span id="hudTime"></span></div>
+      <div id="screenCaption"></div>
+    </div>
+
+    <div id="stats" class="hidden">
+      <div class="stat" id="stEnergy"><div class="lab">ENERGY</div><div class="track"><div class="seg"></div><div class="val"></div></div></div>
+      <div class="stat" id="stSec"><div class="lab">SECURITY</div><div class="track"><div class="seg"></div><div class="val"></div></div></div>
+      <div class="stat" id="stRep"><div class="lab">REPUTATION</div><div class="track"><div class="seg"></div><div class="val"></div></div></div>
+    </div>
+
+    <!-- title menu -->
+    <div id="menuPanel" class="panel hidden">
+      <div class="choices">
+        <button class="pixbtn" id="btnStart"><span class="key">1.</span>CLOCK IN</button>
+        <button class="pixbtn" id="btnBrief"><span class="key">2.</span>SECURITY BRIEFING</button>
+        <button class="pixbtn" id="btnHall"><span class="key">3.</span>HALL OF SHAME</button>
+      </div>
+    </div>
+
+    <!-- briefing -->
+    <div id="briefPanel" class="panel hidden">
+      <div class="panelTitle">SECURITY BRIEFING</div>
+      <div class="panelText">
+        It is Monday. You have one job:<br>
+        make it to <span class="dim">FRIDAY 5PM</span> without destroying the company.<br><br>
+        <span class="dim">ENERGY</span> — runs on coffee. Hit 0 and you fall asleep at your desk. Bad things happen to sleeping employees.<br>
+        <span class="dim">SECURITY</span> — how compromised you are. Hit 0 and the hackers win.<br>
+        <span class="dim">REPUTATION</span> — hit 0 and you're fired. Technically safe. Still a loss.<br><br>
+        Along the trail you will meet phishing emails, mysterious USB sticks, and people who sound exactly like your CEO but are not your CEO.<br><br>
+        <span class="dim">Every disaster in this game is based on a real attack. The tips are real too. The fish email is, unfortunately, also real.</span>
+      </div>
+      <div class="choices"><button class="pixbtn" id="btnBriefBack">BACK</button></div>
+    </div>
+
+    <!-- hall of shame -->
+    <div id="hallPanel" class="panel hidden">
+      <div class="panelTitle">HALL OF SHAME</div>
+      <div id="hallList"></div>
+      <div class="choices"><button class="pixbtn" id="btnHallBack">BACK</button></div>
+    </div>
+
+    <!-- setup -->
+    <div id="setupPanel" class="panel hidden">
+      <div class="panelTitle">NEW HIRE PAPERWORK</div>
+      <div class="panelText">What is your name, employee?</div>
+      <input id="nameInput" maxlength="12" placeholder="NAME" autocomplete="off">
+      <div class="panelText">Choose your role:</div>
+      <div class="choices" id="roleChoices"></div>
+    </div>
+
+    <!-- travel controls -->
+    <div id="travelPanel" class="panel hidden">
+      <div id="actionRow">
+        <button class="pixbtn" id="btnWork">KEEP WORKING</button>
+        <button class="pixbtn" id="btnCoffee">COFFEE<span id="coffeeCups"></span></button>
+      </div>
+    </div>
+
+    <!-- event -->
+    <div id="eventPanel" class="panel hidden">
+      <div class="panelTitle" id="evTitle"></div>
+      <div class="panelText" id="evText"></div>
+      <button class="pixbtn hidden" id="evInstinct"></button>
+      <div class="tipBox hidden" id="evHint"></div>
+      <div class="choices" id="evChoices"></div>
+    </div>
+
+    <!-- outcome -->
+    <div id="outcomePanel" class="panel hidden">
+      <div class="panelText" id="outText"></div>
+      <div class="tipBox hidden" id="outTip"></div>
+      <div class="choices"><button class="pixbtn" id="btnContinue">CONTINUE</button></div>
+    </div>
+
+    <!-- inbox minigame -->
+    <div id="mailPanel" class="panel hidden">
+      <div class="panelTitle">MANDATORY SECURITY TRAINING</div>
+      <div class="panelText">Sort the inbox. <span class="dim">PHISH or LEGIT. Be quick — slow clicks count as clicks.</span></div>
+      <div id="mailCard"></div>
+      <div id="mailTimer"><div class="seg" style="width:100%"></div></div>
+      <div id="mailBtns">
+        <button class="pixbtn" id="btnPhish">PHISH</button>
+        <button class="pixbtn" id="btnLegit">LEGIT</button>
+      </div>
+      <div id="mailScore"></div>
+    </div>
+
+    <!-- ending -->
+    <div id="endPanel" class="panel hidden">
+      <div class="panelTitle" id="endTitle"></div>
+      <div class="panelText" id="endText"></div>
+      <div class="tipBox hidden" id="endTip"></div>
+      <div class="choices">
+        <button class="pixbtn" id="btnRetry">CLOCK IN AGAIN</button>
+        <button class="pixbtn" id="btnEndHall">HALL OF SHAME</button>
+      </div>
+    </div>
+
+    <div id="logWrap" class="hidden">
+      <div class="logTitle">THE WEEK SO FAR</div>
+      <div id="eventLog"></div>
+    </div>
+
+    <div id="footer">
+      <button class="linkbtn" id="muteBtn">&#9834; sound</button>
+      <button class="linkbtn" id="quitBtn">&#8634; give up</button>
+      <a class="linkbtn" href="https://nakfrg.com/">arcade</a>
+      <a class="linkbtn" href="https://nakfrg.com/tamafroggi.html">tamafroggi</a>
+      <a class="linkbtn" href="https://nakfrg.com/breaker.html">breaker</a>
+      <a class="linkbtn" href="https://nakfrg.com/froggp.html">frog gp</a>
+      <a class="linkbtn" href="https://capycalc.nakfrg.com/">capycalc</a>
+    </div>
+  </div>
+
+<script>
+(function () {
+"use strict";
+var $ = function(id){ return document.getElementById(id); };
+
+/* ── sound: tiny 1-bit blips ── */
+var AC=null, muted = localStorage.getItem('pt_mute')==='1';
+function ac(){ if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return AC; }
+function blip(freq,dur,type,vol){
+  if(muted) return; var a=ac(); if(!a) return;
+  var o=a.createOscillator(), g=a.createGain();
+  o.type=type||'square'; o.frequency.value=freq;
+  g.gain.setValueAtTime(vol||0.04, a.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.0001, a.currentTime+(dur||0.08));
+  o.connect(g); g.connect(a.destination); o.start(); o.stop(a.currentTime+(dur||0.08));
+}
+function sClick(){ blip(620,0.05); }
+function sGood(){ blip(520,0.07); setTimeout(function(){blip(780,0.09);},70); }
+function sBad(){ blip(200,0.12); setTimeout(function(){blip(140,0.16);},90); }
+function sDeath(){ [330,262,196,131].forEach(function(f,i){ setTimeout(function(){blip(f,0.22,'square',0.05);}, i*180); }); }
+function sWin(){ [392,523,659,784].forEach(function(f,i){ setTimeout(function(){blip(f,0.14);}, i*110); }); }
+$('muteBtn').textContent = muted ? '\u2669 muted' : '\u266A sound';
+$('muteBtn').onclick = function(){ muted=!muted; localStorage.setItem('pt_mute', muted?'1':'0');
+  this.textContent = muted ? '\u2669 muted' : '\u266A sound'; if(!muted) sClick(); };
+
+/* ── sprites: '#' white ── */
+var SPR = {
+  walk1:["   ####   ","   #  #   ","   ####   ","    ##    ","  ######  "," # #||# # "," # #||# # ","   ####   ","   #  #   ","  ##  ##  ","  #    #  "," ##    ## "],
+  walk2:["   ####   ","   #  #   ","   ####   ","    ##    ","  ######  "," # #||# # "," # #||# # ","   ####   ","   ####   ","    ##    ","   #  #   ","  ##  ##  "],
+  sleep:["          ","          ","      zZ  ","   ####   ","  ######  "," ######## "," ##    ## "," ######## ","          ","          ","          ","          "],
+  desk:["  ######  ","  #    #  ","  # ## #  ","  ######  ","    ##    ","##########","#        #","#        #"],
+  plant:[" #  #  # ","## # # ##"," ## # ## ","  #####  ","   ###   ","  #   #  ","  #####  "],
+  cooler:[" ###### "," #    # "," # ## # "," ###### ","  #  #  ","  #  #  ","  ####  "],
+  rack:["########","# #### #","# #  # #","# #### #","# #  # #","# #### #","# #### #","########"],
+  mail:["################","##            ##","# ##        ## #","#   ##    ##   #","#     ####     #","#    ##  ##    #","#   ##    ##   #","#  ##      ##  #","###          ###","################"],
+  usb:["     ######     ","     # ## #     ","     #    #     ","  ############  ","  #          #  ","  #  ##  ##  #  ","  #          #  ","  #   ####   #  ","  #          #  ","  ############  "],
+  phone:["  #####         ","  #    ##       ","  # ##   #      ","  ####    #     ","    ##     #    ","     #      #   ","      #   ####  ","       #    #   ","        ## # #  ","         #####  "],
+  wifi:["   ##########   ","  ##        ##  "," ##          ## ","    ########    ","   ##      ##   ","      ####      ","     ##  ##     ","                ","       ##       ","       ##       "],
+  door:["  ##########  ","  #        #  ","  #        #  ","  #        #  ","  #     ## #  ","  #     ## #  ","  #        #  ","  #        #  ","  #        #  ","  ##########  "],
+  db:["    ######    ","  ##########  ","  #        #  ","  ##########  ","  #        #  ","  ##########  ","  #        #  ","  ##########  "],
+  skull:["   ########   ","  ##########  "," ############ "," ##  ####  ## "," ##  ####  ## "," ############ ","  ####  ####  ","   ########   ","   # # ## #   ","   ########   "],
+  stone:["    ########    ","   ##      ##   ","  ##  ####  ##  ","  ## # ## # ##  ","  ##  ####  ##  ","  ##   ##   ##  ","  ##        ##  ","  ##  ####  ##  ","  ##        ##  ","################"],
+  coffee:["   # #  #   ","  #   #  #  ","   #   #    ","  ########  ","  #      ###","  #      # #","  #      ###","  ########  ","   ######   "],
+  qr:["##########","# ##  # ##","# ## ## ##","##   #  ##","## ## ## #","#  # ##  #","## ##  # #","##########"],
+  gift:["      ##      ","   ###  ###   ","  ##########  ","  #   ##   #  ","  ##########  ","  #   ##   #  ","  #   ##   #  ","  ##########  "],
+  badge:["  ########  ","  #  ##  #  ","  #  ##  #  ","  # #### #  ","  #      #  ","  # #### #  ","  # #  # #  ","  ########  "],
+  printer:[" ########## "," #        # "," ########## ","############","#  ######  #","#          #","############","  ##    ##  "],
+  laptop:["  ##########  ","  #        #  ","  # ###### #  ","  #        #  ","  ##########  "," ############ ","##############"],
+  bug:["  #      #  ","   #    #   ","   ######   ","# ######## #"," ########## ","# ######## #"," #########  ","   #    #   ","  #      #  "],
+  cable:["  ####      ","  #  #      ","  ####      ","   ##       ","   ##       ","   ###      ","     ##     ","      ##### ","          # ","      ##### "],
+  note:["  ##########  ","  #        #  ","  # ###### #  ","  #        #  ","  # ####   #  ","  #        #  ","  # ###### #  ","  ########    ","  ######      "],
+  trophy:["  ##########  "," ############ "," ## ###### ## "," ## ###### ## "," #  ######  # ","    ######    ","     ####     ","      ##      ","    ######    ","   ########   "],
+  zoom:["##############","#            #","# ####       #","# #  # ##### #","# ####       #","# #  # ###   #","#            #","##############"],
+  clock:["   ######   ","  ##    ##  "," ##  ##  ## "," #   ##   # "," #   ####  # "," ##      ## ","  ##    ##  ","   ######   "]
+};
+
+function drawMap(ctx,map,x,y,s,color){
+  ctx.fillStyle=color||'#fff';
+  for(var r=0;r<map.length;r++){
+    var row=map[r];
+    for(var c=0;c<row.length;c++){
+      if(row[c]!==' '){ ctx.fillRect(x+c*s, y+r*s, s, s); }
+    }
+  }
+}
+
+/* ── scene renderer ── */
+var cv=$('scene'), ctx=cv.getContext('2d');
+var W=cv.width, H=cv.height;
+var scroll=0, walking=false, frame=0, tick=0;
+var sceneMode='trail';          // 'trail' | 'icon' | 'sleep'
+var sceneIcon=null, iconScale=4;
+var PROPS=[ [SPR.desk,0], [SPR.plant,120], [SPR.cooler,230], [SPR.desk,320], [SPR.rack,440], [SPR.plant,540], [SPR.desk,620] ];
+var TRAILLEN=740;
+/* the office's only two spots of colour */
+var PLANT_GREEN='#5fcf6b', COOLER_BLUE='#5aa9f0';
+function propColor(m){ return m===SPR.plant ? PLANT_GREEN : (m===SPR.cooler ? COOLER_BLUE : '#fff'); }
+
+function render(){
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#fff';
+  if(sceneMode==='icon' && sceneIcon){
+    var m=SPR[sceneIcon]||SPR.mail;
+    var s=iconScale, w=m[0].length*s, h=m.length*s;
+    drawMap(ctx,m,(W-w)/2|0,(H-h)/2|0,s);
+    return;
+  }
+  // windows (parallax slow)
+  ctx.globalAlpha=0.18;
+  for(var i=0;i<5;i++){
+    var wx=((i*90 - (scroll*0.4))%(TRAILLEN*0.5)+TRAILLEN*0.5)%(TRAILLEN*0.5)-20;
+    ctx.strokeStyle='#fff'; ctx.lineWidth=2;
+    ctx.strokeRect(wx,12,34,22);
+    ctx.beginPath(); ctx.moveTo(wx+17,12); ctx.lineTo(wx+17,34); ctx.stroke();
+  }
+  ctx.globalAlpha=1;
+  // floor
+  ctx.fillRect(0,H-14,W,2);
+  ctx.globalAlpha=0.35;
+  for(var d=0; d<W; d+=10){
+    var dx=(d - (scroll%10)+10)%W;
+    ctx.fillRect(dx,H-8,4,2);
+  }
+  ctx.globalAlpha=1;
+  // props
+  for(var p=0;p<PROPS.length;p++){
+    var m2=PROPS[p][0];
+    var px=((PROPS[p][1]-scroll)%TRAILLEN+TRAILLEN)%TRAILLEN-40;
+    if(px>-70 && px<W+10){
+      if(m2===SPR.plant){
+        /* green leaves, white pot (bottom 3 rows) */
+        var py=H-14-m2.length*3;
+        for(var pr=0;pr<m2.length;pr++){
+          var col2 = pr < m2.length-3 ? PLANT_GREEN : '#fff';
+          for(var pc=0;pc<m2[pr].length;pc++) if(m2[pr][pc]!==' '){
+            ctx.fillStyle=col2; ctx.fillRect(px+pc*3, py+pr*3, 3, 3);
+          }
+        }
+      } else {
+        drawMap(ctx,m2,px,H-14-m2.length*3,3,propColor(m2));
+      }
+    }
+  }
+  // player
+  var pm = sceneMode==='sleep' ? SPR.sleep : (walking && (frame%16<8) ? SPR.walk2 : SPR.walk1);
+  drawMap(ctx,pm,38,H-14-pm.length*3,3);
+}
+function loop(){
+  tick++;
+  if(walking){ scroll+=1.4; frame++; }
+  if(tick%2===0) render();
+  requestAnimationFrame(loop);
+}
+loop();
+
+function showIcon(name,s){ sceneMode='icon'; sceneIcon=name; iconScale=s||4; }
+function showTrail(){ sceneMode='trail'; }
+
+/* ── game state ── */
+var DAYS=['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY'];
+var G=null;
+
+var ROLES=[
+  {id:'intern', name:'THE INTERN', desc:'No access, no fear, nothing to lose. Damage reduced. Nobody listens to you.', energy:100,sec:70,rep:40, mod:{dmg:0.75}},
+  {id:'manager', name:'MIDDLE MANAGER', desc:'Drowning in email. Balanced stats, maximum meetings.', energy:85,sec:60,rep:60, mod:{}},
+  {id:'itadmin', name:'IT ADMIN', desc:'You know things. Spend IT INSTINCT to reveal a threat (3 per week). But admin access means bigger explosions.', energy:80,sec:75,rep:55, mod:{hints:true,dmg:1.3}},
+  {id:'ceo', name:'THE CEO', desc:'Whale-sized target. Everyone is hunting you, personally. Big hits, small wins. Hard mode.', energy:75,sec:40,rep:90, mod:{dmg:1.35,whale:true}}
+];
+
+var COFFEE_GAIN=18, SEG_DRAIN=10;   /* passive fatigue per work segment */
+function newGame(name, role){
+  G={ name:name, role:role, day:0, seg:0, energy:role.energy, sec:role.sec, rep:role.rep,
+      coffees:3, hintCharges:3, smart:0, oops:0, flags:{}, queue:[], usedEvents:{}, over:false };
+}
+
+/* ── stat plumbing ── */
+function clamp(v){ return Math.max(0, Math.min(100, v)); }
+function applyDelta(d){
+  if(!d) return;
+  var mod = G.role.mod.dmg || 1;
+  if(d.energy) G.energy = clamp(G.energy + d.energy);
+  if(d.sec)    G.sec    = clamp(G.sec + (d.sec<0 ? Math.round(d.sec*mod) : secGain(d.sec)));
+  if(d.rep)    G.rep    = clamp(G.rep + d.rep);
+  updateStats();
+}
+function secGain(v){ return G.role.mod.whale ? Math.max(1, Math.round(v*0.6)) : v; }
+function deltaText(d){
+  if(!d) return '';
+  var out=[];
+  var mod = G.role.mod.dmg || 1;
+  if(d.energy) out.push('ENERGY '+(d.energy>0?'+':'')+d.energy);
+  if(d.sec){ var s=d.sec<0?Math.round(d.sec*mod):secGain(d.sec); out.push('SECURITY '+(s>0?'+':'')+s); }
+  if(d.rep) out.push('REP '+(d.rep>0?'+':'')+d.rep);
+  return out.length ? '<br><span class="dim">['+out.join(' / ')+']</span>' : '';
+}
+function updateStats(){
+  setBar('stEnergy', G.energy); setBar('stSec', G.sec); setBar('stRep', G.rep);
+}
+function setBar(id,v){
+  var el=$(id);
+  el.querySelector('.seg').style.width=v+'%';
+  el.querySelector('.val').textContent=v;
+  el.classList.toggle('low', v<=25);
+}
+/* a tiny 1-bit coffee cup: filled = available, outline = spent */
+function cupCanvas(filled){
+  var c=document.createElement('canvas'); c.width=9; c.height=9;
+  c.style.width='11px'; c.style.height='11px';
+  var x=c.getContext('2d'); x.fillStyle='#fff';
+  var CUP=[
+   "        ",
+   " ###### #",
+   " #    # #",
+   " #    ##",
+   " #    # ",
+   " #    # ",
+   "  ####  "];
+  for(var r=0;r<CUP.length;r++) for(var col=0;col<CUP[r].length;col++){
+    if(CUP[r][col]!=='#') continue;
+    if(filled){ x.fillRect(col,r,1,1); }
+    else {
+      /* outline only when spent */
+      var edge = r===0||r===CUP.length-1||col===0 ||
+        (r>0 && CUP[r-1][col]!=='#') || (r<CUP.length-1 && (CUP[r+1]||'')[col]!=='#') ||
+        (CUP[r][col-1]!=='#') || (CUP[r][col+1]!=='#');
+      if(edge) x.fillRect(col,r,1,1);
+    }
+  }
+  if(!filled) c.style.opacity='0.35';
+  return c;
+}
+function updateHud(){
+  $('hudDay').textContent = DAYS[G.day];
+  var hr = 9 + G.seg*2;
+  $('hudTime').textContent = (hr<=12? hr+'AM' : (hr-12)+'PM');
+  var box=$('coffeeCups'); box.innerHTML='';
+  for(var i=0;i<3;i++) box.appendChild(cupCanvas(i<G.coffees));
+}
+
+/* ── log ── */
+function log(msg){
+  var el=document.createElement('div');
+  el.innerHTML=msg;
+  var prev=$('eventLog').querySelector('.fresh'); if(prev) prev.classList.remove('fresh');
+  el.className='fresh';
+  $('eventLog').prepend(el);
+}
+
+/* ── panels ── */
+var PANELS=['menuPanel','briefPanel','hallPanel','setupPanel','travelPanel','eventPanel','outcomePanel','mailPanel','endPanel'];
+function show(panel){
+  PANELS.forEach(function(p){ $(p).classList.toggle('hidden', p!==panel); });
+}
+function caption(t){ $('screenCaption').textContent=t||''; }
+
+/* ══════════════ EVENTS ══════════════ */
+/* All event content lives in data/*.json — see CONTRIBUTING.md for the format.
+   The adapter below turns a JSON event into the {text(),choices:[{go()}]} shape
+   the engine consumes. */
+/* DATA-ADAPTER-START */
+function interp(s){
+  return String(s)
+    .replace(/\{name\}/g, G.name)
+    .replace(/\{NAME\}/g, G.name.toUpperCase())
+    .replace(/\{boss\}/g, BOSS())
+    .replace(/\{Boss\}/g, BOSSC())
+    .replace(/\{BOSS_\}/g, BOSSU().replace(' ','_'))
+    .replace(/\{BOSS\}/g, BOSSU());
+}
+function pickVariant(t){
+  if(typeof t==='string') return t;
+  for(var i=0;i<t.length;i++){
+    var v=t[i];
+    if(v.ifRole && v.ifRole!==G.role.id) continue;
+    if(v.ifFlag && !G.flags[v.ifFlag]) continue;
+    return v.t;
+  }
+  return '';
+}
+function eventText(e){
+  var s=pickVariant(e.text);
+  if(e.extra){ e.extra.forEach(function(x){
+    if(x.ifRole && x.ifRole!==G.role.id) return;
+    if(x.ifFlag && !G.flags[x.ifFlag]) return;
+    s+=x.t;
+  }); }
+  if(e.hint) hint(interp(e.hint));
+  return interp(s);
+}
+function resolveOutcome(go){
+  var res=go;
+  if(go.branches){
+    var r=null;
+    for(var i=0;i<go.branches.length;i++){
+      var b=go.branches[i];
+      if(b.ifFlag && !G.flags[b.ifFlag]) continue;
+      if(b.ifNotFlag && G.flags[b.ifNotFlag]) continue;
+      if(typeof b.roll==='number'){ if(r===null) r=Math.random(); if(r>=b.roll) continue; }
+      res=b; break;
+    }
+  }
+  var list=function(v){ return Array.isArray(v)?v:[v]; };
+  if(res.setFlag) list(res.setFlag).forEach(function(f){ G.flags[f]=true; });
+  if(res.clearFlag) list(res.clearFlag).forEach(function(f){ G.flags[f]=false; });
+  if(typeof res.setEnergy==='number') G.energy=res.setEnergy;
+  var out={};
+  if(res.smart) out.smart=res.smart;
+  if(res.oops) out.oops=res.oops;
+  if(res.endgame) out.endgame=true;
+  if(res.death){
+    out.death={cause:interp(res.death.cause), title:interp(res.death.title),
+      msg:interp(res.death.msg), tip:res.death.tip?interp(res.death.tip):undefined};
+  } else {
+    out.d=res.d||{};
+    out.msg=interp(res.msg);
+    if(res.tip) out.tip=interp(res.tip);
+  }
+  return out;
+}
+function makeEvent(e){
+  var ev={id:e.id, title:e.title, icon:e.icon};
+  if(e.roles) ev.roles=e.roles;
+  if(e.cond) ev.cond=function(){
+    return e.cond.anyFlag.some(function(f){ return !!G.flags[f]; });
+  };
+  ev.text=function(){ return eventText(e); };
+  ev.choices=e.choices.map(function(c){
+    return {label:c.label, go:function(){ return resolveOutcome(c.go); }};
+  });
+  return ev;
+}
+/* DATA-ADAPTER-END */
+
+var EVENTS=[];
+
+/* IT INSTINCT is now an activated power (3 charges/run), not passive text.
+   hint() just records the tip during ev.text(); runEvent decides how to surface it. */
+function hint(t){ if(G && G.role.mod.hints) G._hint=t; return ''; }
+
+/* who outranks you depends on who you are */
+function BOSS(){ return G.role.id==='ceo' ? 'the board chair' : 'the CEO'; }
+function BOSSC(){ return G.role.id==='ceo' ? 'The board chair' : 'The CEO'; }
+function BOSSU(){ return G.role.id==='ceo' ? 'BOARD CHAIR' : 'CEO'; }
+
+/* ── scripted events ── */
+var OPENERS=[];
+function pickOpener(){ return OPENERS[(Math.random()*OPENERS.length)|0]; }
+
+var RANSOM=null, FINALE=null, SLEEP_EV=null;
+var PEACE=[];
+
+/* ── travel engine ── */
+var pendingResult=null;
+
+function startWeek(){
+  updateStats(); updateHud();
+  $('stats').classList.remove('hidden');
+  $('logWrap').classList.remove('hidden');
+  $('subtitle').textContent = G.name + ' \u2014 ' + G.role.name;
+  showTrail(); walking=false;
+  caption('');
+  log(DAYS[0]+', 9AM. It begins.');
+  runEvent(pickOpener());
+}
+
+function nextSegment(){
+  sClick();
+  if(G.over) return;
+  // advance time
+  G.seg++;
+  if(G.seg>3){ G.seg=0; G.day++; G.coffees=3;
+    if(G.day<=4) log('\u2014 '+DAYS[G.day]+' \u2014'); }
+  /* the working day itself is tiring */
+  var drain = SEG_DRAIN + (G.role.mod.whale ? 2 : 0);   /* the CEO sleeps worse */
+  G.energy = clamp(G.energy - drain);
+  updateHud();
+  show('travelPanel');
+  showTrail(); walking=true; caption('');
+  setTimeout(function(){
+    walking=false;
+    if(G.energy<=0){ runEvent(SLEEP_EV); return; }
+    // scripted beats
+    if(G.day===4 && G.seg===3){ runEvent(FINALE); return; }
+    if(G.day===2 && G.seg===1 && !G.flags.trained){ G.flags.trained=true; startMail(); return; }
+    if((G.flags.malware||G.flags.breachedAcct) && G.day>=1 && !G.flags.ransomDone && Math.random()<0.5){
+      G.flags.ransomDone=true; runEvent(RANSOM); return; }
+    if(G.sec<20 && !G.flags.ransomDone && Math.random()<0.4){
+      G.flags.ransomDone=true; runEvent(RANSOM); return; }
+    // random event or peace
+    if(Math.random()<(G.role.mod.whale?0.9:0.78)){
+      var pool=EVENTS.filter(function(e){
+        if(G.usedEvents[e.id]) return false;
+        if(e.roles && e.roles.indexOf(G.role.id)<0) return false;
+        if(e.cond && !e.cond()) return false;
+        return true;
+      });
+      if(pool.length){ var ev=pool[(Math.random()*pool.length)|0]; G.usedEvents[ev.id]=true; runEvent(ev); return; }
+    }
+    var p=PEACE[(Math.random()*PEACE.length)|0];
+    applyDelta(p.d);
+    showOutcome({msg:p.t+deltaText(p.d)});
+  }, 1300);
+}
+
+function runEvent(ev){
+  show('eventPanel');
+  showIcon(ev.icon, 4);
+  blip(440,0.06); setTimeout(function(){blip(330,0.08);},80);
+  $('evTitle').textContent=ev.title;
+  G._hint=null;
+  $('evText').innerHTML=ev.text();
+  $('evHint').classList.add('hidden'); $('evHint').innerHTML='';
+  var instinct=$('evInstinct');
+  if(G.role.mod.hints && G._hint){
+    instinct.classList.remove('hidden');
+    if(G.hintCharges>0){
+      instinct.disabled=false;
+      instinct.innerHTML='\uD83D\uDD0D IT INSTINCT \u00B7 '+G.hintCharges+' LEFT';
+      var tip=G._hint;
+      instinct.onclick=function(){
+        if(G.hintCharges<=0) return;
+        G.hintCharges--; sGood();
+        $('evHint').innerHTML='<span class="dim">[IT INSTINCT] '+tip+'</span>';
+        $('evHint').classList.remove('hidden');
+        instinct.classList.add('hidden');
+        updateHud();
+      };
+    } else {
+      instinct.disabled=true; instinct.onclick=null;
+      instinct.innerHTML='\uD83D\uDD0D IT INSTINCT \u00B7 SPENT';
+    }
+  } else {
+    instinct.classList.add('hidden');
+  }
+  var box=$('evChoices'); box.innerHTML='';
+  ev.choices.forEach(function(c,i){
+    var b=document.createElement('button');
+    b.className='pixbtn';
+    b.innerHTML='<span class="key">'+(i+1)+'.</span>'+c.label;
+    b.onclick=function(){ resolve(ev,c); };
+    box.appendChild(b);
+  });
+  log('\u25B8 '+ev.title);
+}
+
+function resolve(ev,c){
+  var r=c.go();
+  if(r.smart) G.smart+=r.smart;
+  if(r.oops) G.oops+=r.oops;
+  if(r.death){ die(r.death); return; }
+  var dtxt=deltaText(r.d);
+  applyDelta(r.d);
+  if(r.d && (r.d.sec<0 || r.d.rep<0)) sBad(); else sGood();
+  // stat-death checks
+  if(G.sec<=0){ die({cause:'ran security down to zero', title:'FULLY COMPROMISED',
+    msg:'Between the clicks, the links, and the trust freely given, there is nothing left to breach. Your accounts, files, and dignity are all under new management. Your credentials are on sale for $4. Buy-one-get-one.',
+    tip:'No single click did this \u2014 it was the pile-up. Security is a habit stack: report, verify, patch, lock. Small boring wins, every day.'}); return; }
+  if(G.rep<=0){ die({cause:'was walked out by HR', title:'EMPLOYMENT: TERMINATED',
+    msg:'Security intact. Career: not. HR walks you out with a box containing one mug and one shame. Technically, the company is safe from you now, which HR notes is "a kind of win."',
+    tip:'Fun fact: the insider threat report you starred in will be used in training for years.'}); return; }
+  if(r.endgame){ pendingResult={win:true, msg:r.msg+dtxt, tip:r.tip}; showOutcome({msg:r.msg+dtxt, tip:r.tip}); return; }
+  showOutcome({msg:r.msg+dtxt, tip:r.tip});
+}
+
+function showOutcome(o){
+  show('outcomePanel');
+  $('outText').innerHTML=o.msg;
+  if(o.tip){ $('outTip').innerHTML='<b>SECURITY TIP:</b> '+o.tip; $('outTip').classList.remove('hidden'); }
+  else $('outTip').classList.add('hidden');
+}
+
+$('btnContinue').onclick=function(){
+  sClick();
+  if(pendingResult && pendingResult.win){ win(); return; }
+  show('travelPanel'); showTrail(); caption('');
+};
+
+$('btnWork').onclick=nextSegment;
+$('btnCoffee').onclick=function(){
+  if(G.over) return;
+  if(G.coffees<=0){
+    sBad(); applyDelta({rep:-4});
+    if(G.rep<=0){ die({cause:'assaulted the coffee machine on camera', title:'EMPLOYMENT: TERMINATED',
+      msg:'Security footage shows you shaking the coffee machine while making a sound HR describes as "primal". The machine is fine. Your employment is not.',
+      tip:'Fatigue makes people do desperate things \u2014 including clicking desperate links. Rest is a security control.'}); return; }
+    showOutcome({msg:'You shake the machine. It gives you a cup of hot disappointment. A fourth coffee was never the answer.'+deltaText({rep:-4})});
+    return;
+  }
+  G.coffees--; updateHud(); sGood();
+  applyDelta({energy:COFFEE_GAIN});
+  var left=G.coffees;
+  var quip = left===2 ? 'First cup. The world sharpens into focus.'
+           : left===1 ? 'Second cup. You could hear colours now.'
+           : 'Last cup of the day. Use the clarity wisely.';
+  showOutcome({msg:quip+' The beans scream so you don\u2019t have to.'+deltaText({energy:COFFEE_GAIN})});
+};
+
+/* ── inbox minigame ── */
+var MAILS=[];
+var mailIdx=0, mailScore=0, mailTimer=null, mailT=0;
+
+function startMail(){
+  show('mailPanel'); showIcon('mail',3);
+  mailIdx=0; mailScore=0;
+  $('mailScore').textContent='';
+  nextMail();
+}
+function nextMail(){
+  if(mailIdx>=MAILS.length){ endMail(); return; }
+  var m=MAILS[mailIdx];
+  $('mailCard').innerHTML='<span class="dim">FROM:</span> '+m.from+'<br><span class="dim">SUBJ:</span> '+m.sub+'<br><br>'+m.body;
+  $('mailScore').textContent='EMAIL '+(mailIdx+1)+' / '+MAILS.length+'  \u2014  CORRECT: '+mailScore;
+  mailT=100;
+  clearInterval(mailTimer);
+  mailTimer=setInterval(function(){
+    mailT-=1.4;
+    $('mailTimer').querySelector('.seg').style.width=Math.max(0,mailT)+'%';
+    if(mailT<=0){ clearInterval(mailTimer); answerMail(null); }
+  },70);
+}
+var mailLock=false;
+function answerMail(saidPhish){
+  if(mailLock || mailIdx>=MAILS.length) return;
+  mailLock=true;
+  clearInterval(mailTimer);
+  var m=MAILS[mailIdx];
+  var correct = saidPhish!==null && saidPhish===m.phish;
+  if(correct){ mailScore++; sGood(); } else sBad();
+  var verdict = saidPhish===null ? 'TOO SLOW \u2014 it sat in your inbox and you clicked it by default.' :
+    (correct ? 'CORRECT.' : 'WRONG.');
+  $('mailCard').innerHTML='<span class="'+(correct?'':'blink')+'">'+verdict+'</span><br><br><span class="dim">'+m.why+'</span>';
+  mailIdx++;
+  setTimeout(function(){ mailLock=false; nextMail(); }, correct?1500:2600);
+}
+$('btnPhish').onclick=function(){ answerMail(true); };
+$('btnLegit').onclick=function(){ answerMail(false); };
+function endMail(){
+  var d={sec:(mailScore-4)*4};
+  applyDelta(d);
+  var grade = mailScore>=7?'You passed with distinction. IT quietly adds you to the "safe to email" list.'
+    : mailScore>=5?'You passed. Barely. The certificate prints in Comic Sans as punishment.'
+    : 'You failed mandatory training. It reschedules itself. It will always reschedule itself.';
+  showOutcome({msg:'TRAINING COMPLETE: '+mailScore+'/'+MAILS.length+' sorted correctly.<br><br>'+grade+deltaText(d),
+    tip:'Sender domain first, then the ask. Urgency, secrecy, threats, or "verify your password" = phish. When unsure: report, don\u2019t click.'});
+}
+
+/* ── endings ── */
+function die(death){
+  G.over=true; sDeath();
+  showIcon('stone',5); walking=false;
+  caption('');
+  show('endPanel');
+  $('endTitle').textContent=death.title;
+  $('endText').innerHTML='<span class="dim">HERE LIES '+G.name.toUpperCase()+'</span><br>'
+    +G.role.name+' \u2014 who '+death.cause+'<br>'
+    +'<span class="dim">'+DAYS[Math.min(G.day,4)]+', '+(9+G.seg*2>12?(9+G.seg*2-12)+'PM':(9+G.seg*2)+'AM')+'</span><br><br>'
+    +death.msg;
+  if(death.tip){ $('endTip').innerHTML='<b>SECURITY TIP:</b> '+death.tip; $('endTip').classList.remove('hidden'); }
+  else $('endTip').classList.add('hidden');
+  log('\u2620 '+death.title);
+  saveShame(death.cause);
+}
+
+function win(){
+  G.over=true; sWin();
+  showIcon('trophy',5); walking=false;
+  show('endPanel');
+  var grade, blurb;
+  var score=G.smart-G.oops;
+  if(G.oops===0 && G.smart>=8){ grade='RANK: HUMAN FIREWALL'; blurb='Zero incidents. IT wants to study you. Legal wants to clone you. The hackers have moved on to an easier company, which is all of them.'; }
+  else if(score>=5){ grade='RANK: SECURITY CHAMPION'; blurb='A few wobbles, mostly wisdom. You verified, you reported, you locked your screen. The company survives entirely because of people like you, and it will never thank you.'; }
+  else if(score>=1){ grade='RANK: MOSTLY HARMLESS'; blurb='You made it, in the way a shopping trolley makes it down a hill. Some good calls, some clicks you\u2019d like back. The weekend is yours; the incident reports are IT\u2019s.'; }
+  else { grade='RANK: THE REASON WE HAVE TRAINING'; blurb='You survived the week the way a crash test dummy survives a crash: technically. Your name is now used in security training as a cautionary noun.'; }
+  $('endTitle').textContent='FRIDAY, 5:00 PM \u2014 YOU MADE IT';
+  $('endText').innerHTML=grade+'<br><br>'+blurb
+    +'<br><br><span class="dim">SMART CALLS: '+G.smart+' / QUESTIONABLE CLICKS: '+G.oops
+    +'<br>FINAL \u2014 ENERGY '+G.energy+' \u00B7 SECURITY '+G.sec+' \u00B7 REP '+G.rep+'</span>';
+  $('endTip').innerHTML='<b>THE WHOLE GAME IN ONE TIP:</b> Urgency, secrecy, authority, and "act now" are the four horsemen of every scam. Slow down, verify on a channel YOU choose, and report. That\u2019s it. That\u2019s the firewall.';
+  $('endTip').classList.remove('hidden');
+  log('\u2605 SURVIVED THE WEEK');
+  pendingResult=null;
+}
+
+/* ── hall of shame ── */
+function saveShame(cause){
+  try{
+    var h=JSON.parse(localStorage.getItem('pt_hall')||'[]');
+    h.unshift({n:G.name, r:G.role.name, c:cause, d:DAYS[Math.min(G.day,4)]});
+    localStorage.setItem('pt_hall', JSON.stringify(h.slice(0,12)));
+  }catch(e){}
+}
+function renderHall(){
+  var h=[];
+  try{ h=JSON.parse(localStorage.getItem('pt_hall')||'[]'); }catch(e){}
+  $('hallList').innerHTML = h.length
+    ? h.map(function(e){ return '\u2620 <b>'+e.n+'</b> ('+e.r+') \u2014 '+e.c+' <span class="dim">\u00B7 '+e.d+'</span>'; }).join('<br>')
+    : 'No casualties yet. The trail is patient.';
+}
+
+/* ── menu wiring ── */
+function toMenu(){
+  show('menuPanel');
+  $('stats').classList.add('hidden');
+  $('logWrap').classList.add('hidden');
+  $('subtitle').textContent='SURVIVE THE CORPORATE WORK WEEK';
+  $('hudDay').textContent=''; $('hudTime').textContent='';
+  showTrail(); walking=true; caption('EST. 1998 \u00B7 NO ACTUAL EMPLOYEES WERE HARMED');
+}
+$('btnStart').onclick=function(){ sClick(); show('setupPanel'); walking=false; showIcon('badge',5);
+  caption(''); setTimeout(function(){ $('nameInput').focus(); },50); };
+$('btnBrief').onclick=function(){ sClick(); show('briefPanel'); showIcon('mail',4); walking=false; };
+$('btnBriefBack').onclick=function(){ sClick(); toMenu(); };
+$('btnHall').onclick=function(){ sClick(); renderHall(); show('hallPanel'); showIcon('stone',4); walking=false; };
+$('btnHallBack').onclick=function(){ sClick(); toMenu(); };
+$('btnRetry').onclick=function(){ sClick(); $('eventLog').innerHTML=''; toMenu(); };
+$('btnEndHall').onclick=function(){ sClick(); renderHall(); show('hallPanel'); showIcon('stone',4); };
+$('quitBtn').onclick=function(){
+  if(G && !G.over){ die({cause:'rage-quit on a '+DAYS[Math.min(G.day,4)].toLowerCase(), title:'RESIGNATION: EFFECTIVE IMMEDIATELY',
+    msg:'You stand up, place your badge on the desk, and walk into the sunlight. The database survives. Your plants at home rejoice. Statistically, this was one of the safer choices available.',
+    tip:'Logging off is a legitimate security control. See you Monday.'}); }
+  else toMenu();
+};
+
+var roleBox=$('roleChoices');
+ROLES.forEach(function(r,i){
+  var b=document.createElement('button');
+  b.className='pixbtn';
+  b.innerHTML='<span class="key">'+(i+1)+'.</span>'+r.name+'<span class="roleDesc">'+r.desc+'</span>';
+  b.onclick=function(){
+    sClick();
+    var n=($('nameInput').value||'').trim().toUpperCase() || 'EMPLOYEE #4';
+    newGame(n, r);
+    show('travelPanel');
+    startWeek();
+  };
+  roleBox.appendChild(b);
+});
+
+/* keyboard: number keys pick choices */
+document.addEventListener('keydown', function(e){
+  if(e.key>='1' && e.key<='9'){
+    if(document.activeElement===$('nameInput')) return;
+    var vis=PANELS.filter(function(p){ return !$(p).classList.contains('hidden'); })[0];
+    if(!vis) return;
+    var btns=$(vis).querySelectorAll('.pixbtn');
+    var n=+e.key-1;
+    if(btns[n]) btns[n].click();
+  }
+  if(e.key==='Enter' && document.activeElement===$('nameInput')){
+    var first=$('roleChoices').querySelector('.pixbtn'); if(first) first.focus();
+  }
+});
+
+/* ── data loading ── */
+function loadData(){
+  var files=['data/openers.json','data/events.json','data/specials.json','data/peace.json','data/mails.json'];
+  return Promise.all(files.map(function(f){
+    return fetch(f).then(function(r){
+      if(!r.ok) throw new Error(f+' → HTTP '+r.status);
+      return r.json();
+    });
+  }));
+}
+caption('LOADING TRAIL…');
+loadData().then(function(res){
+  OPENERS=res[0].map(makeEvent);
+  EVENTS=res[1].map(makeEvent);
+  RANSOM=makeEvent(res[2].ransom);
+  FINALE=makeEvent(res[2].finale);
+  SLEEP_EV=makeEvent(res[2].sleep);
+  PEACE=res[3];
+  MAILS=res[4];
+  toMenu();
+}).catch(function(err){
+  caption('FAILED TO LOAD EVENT DATA');
+  $('subtitle').textContent=String(err && err.message || err).toUpperCase();
+});
+})();
+</script>
+</body>
+</html>

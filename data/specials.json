@@ -1,0 +1,71 @@
+{
+  "sleep": {
+    "id": "sleepev",
+    "title": "SYSTEM SHUTDOWN (YOURS)",
+    "icon": "clock",
+    "text": "Energy: zero. Your eyes close mid-keystroke and you sleep face-down on the keyboard, typing 4,000 pages of the letter J.",
+    "choices": [
+      { "label": "ZZZZZZZ…",
+        "go": { "setEnergy": 35, "oops": 1, "d": { "sec": -10, "rep": -10 },
+          "msg": "You wake 40 minutes later. Your screen was unlocked the whole time. A coworker has photographed you. The photo is already a sticker in the team chat.",
+          "tip": "Tired people click things. Fatigue is a genuine security risk — rest, hydrate, and lock your screen even for a nap you didn’t plan." } }
+    ]
+  },
+
+  "ransom": {
+    "id": "ransom",
+    "title": "YOUR SCREEN TURNS RED",
+    "icon": "skull",
+    "text": "<span class=\"blink\">ALL YOUR FILES HAVE BEEN ENCRYPTED.</span><br><br>\"Send 2 BTC within 48 hours or your data is deleted forever. Do not contact IT. Do not turn off the machine. — xX_CryptoLord_Xx\"",
+    "hint": "That malware you picked up earlier just cashed in.",
+    "choices": [
+      { "label": "PAY THE 2 BTC QUIETLY",
+        "go": { "death": {
+          "cause": "negotiated with xX_CryptoLord_Xx",
+          "title": "RANSOM: PAID. FILES: LOL, NO.",
+          "msg": "You buy Bitcoin at a service station kiosk (long story) and pay. The decryption key never arrives — criminal customer service is famously bad. The payment also traces back to your company account, which raises questions with several agencies.",
+          "tip": "Paying ransoms often gets nothing back, funds the next attack, and can even be illegal. The real defense is offline backups — and telling IT immediately." } } },
+      { "label": "DISCONNECT NETWORK, CALL IT",
+        "go": { "smart": 1, "d": { "sec": 20, "rep": -8 },
+          "msg": "You yank the cable and call IT, who arrive at a jog — the fastest anyone has moved in this building. They isolate it before it spreads and restore from last night’s backup. You lose one day’s work and gain one lifetime’s lesson.",
+          "tip": "Ransomware playbook: disconnect from the network immediately, don’t power off (evidence), call IT. Speed stops it spreading. Backups make ransoms pointless." } },
+      { "label": "CLOSE LAPTOP. PRETEND NOTHING HAPPENED.",
+        "go": { "death": {
+          "cause": "hid a ransomware infection under a closed lid",
+          "title": "DATABASE: ENCRYPTED. ALL OF IT.",
+          "msg": "You close the lid and go to lunch. The malware does not go to lunch. By 3pm it has crawled through the network to the file server, the backups, and the production database. Everything the company knows is now a very expensive brick. They trace patient zero. It’s you.",
+          "tip": "Ransomware spreads laterally within hours. Hiding an infection turns one sick laptop into a dead company. Report instantly — nobody good punishes fast reporting." } } }
+    ]
+  },
+
+  "finale": {
+    "id": "finale",
+    "title": "FRIDAY, 4:59 PM",
+    "icon": "clock",
+    "text": "One minute to freedom. Then, an email from \"{boss}\":<br><br><span class=\"dim\">\"Are you at your desk? I need an urgent wire before EOD. Highly confidential — tell NO ONE. I’m boarding a flight, can’t talk. I’m counting on you, {name}.\"</span>",
+    "extra": [
+      { "ifFlag": "oooLeak", "t": " They even know who covered for you Thursday morning. That detailed out-of-office is paying dividends — for them." }
+    ],
+    "hint": "Urgency, secrecy, authority, unreachability. That’s the full royal flush of fraud.",
+    "choices": [
+      { "label": "SEND THE WIRE. GO HOME A HERO.",
+        "go": { "death": {
+          "cause": "wired the money at 4:59 PM on a Friday",
+          "title": "SO CLOSE.",
+          "msg": "You made it to the final minute of the final day, and then wired company money to \"{BOSS_}_Dave_Real\" because an email said hurry. Friday-afternoon fraud exists because tired people click fast. You were the tiredest, fastest person in the building.",
+          "tip": "Attackers deliberately strike Friday 4-5pm when guards are down and verification is hard. Urgent + secret + can’t-call-me is ALWAYS fraud. No exceptions, especially at 4:59." } } },
+      { "label": "FORWARD TO IT. LOG OFF.",
+        "go": { "smart": 1, "endgame": true, "d": { "sec": 10 },
+          "msg": "Forwarded, flagged, done. You shut the laptop at exactly 5:00:00 PM with the serenity of someone who has survived the week.",
+          "tip": "Report-and-leave is a complete response. The scam dies in IT’s quarantine folder over the weekend." } },
+      { "label": "REPLY: \"NEW PHONE, WHO DIS?\"",
+        "go": { "smart": 1, "endgame": true, "d": { "rep": 4 },
+          "msg": "The \"CEO\" replies with mounting fury, blowing their cover entirely. You forward the whole thread to IT with the subject line \"friday entertainment\". IT replies with a trophy emoji.",
+          "tip": "Fraudsters lose composure when the script breaks. But verify-and-report beats banter — do the banter after forwarding." } },
+      { "label": "CALL THE REAL NUMBER",
+        "go": { "smart": 1, "endgame": true, "d": { "sec": 8, "rep": 4 },
+          "msg": "\"A wire? I’ve been on the golf course since noon,\" says {boss}, wind whipping the mic. Confirmed scam. Confirmed golf. You log off into the weekend, undefeated.",
+          "tip": "One thirty-second call on a known number defeats every impersonation ever attempted. The weekend is yours." } }
+    ]
+  }
+}

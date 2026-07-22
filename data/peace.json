@@ -1,0 +1,12 @@
+[
+  { "t": "You attend a meeting that could have been an email. It spawns two more meetings.", "d": { "energy": -6 } },
+  { "t": "Someone microwaves fish in the kitchen. The building unites in silent grief.", "d": { "energy": -4 } },
+  { "t": "You reply-all by accident. Nobody notices. This time.", "d": {} },
+  { "t": "You alt-tab from a spreadsheet to a different, equally bleak spreadsheet.", "d": { "energy": -3 } },
+  { "t": "The office plant judges you silently. You water it as tribute.", "d": { "rep": 2 } },
+  { "t": "Quiet hour. Actual work occurs. Historians will dispute this.", "d": { "rep": 4, "energy": -5 } },
+  { "t": "You help a coworker un-mute. You are briefly a god.", "d": { "rep": 3 } },
+  { "t": "Free cake in the kitchen for someone’s birthday. You do not know them. You eat the cake.", "d": { "energy": 8 } },
+  { "t": "The aircon sets itself to \"meat locker\". Productivity somehow rises.", "d": { "energy": -3 } },
+  { "t": "You clear 30 emails. 31 arrive. The sea refuses no river.", "d": { "energy": -5 } }
+]

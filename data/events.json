@@ -1,0 +1,1014 @@
+[
+  {
+    "id": "phish1", "title": "NEW EMAIL", "icon": "mail",
+    "text": "From: <span class=\"dim\">payroII-alert@corp-secure-portal.biz</span><br>Subject: URGENT!! Your salary payment is SUSPENDED<br><br>\"Dear {name}, click within 24hrs to verify your account or LOSE your pay!!\"",
+    "hint": "Two capital i’s in \"payroII\". Nice try.",
+    "choices": [
+      { "label": "CLICK THE LINK",
+        "go": { "setFlag": "credsLeaked", "oops": 1, "d": { "sec": -30 },
+          "msg": "You enter your username and password into a very convincing fake login page. It even has the company logo. Somewhere, a hacker high-fives another hacker.",
+          "tip": "Urgency + threats = phishing. Real payroll never emails \"click or lose your salary\". Check the sender domain character by character." } },
+      { "label": "REPORT TO IT",
+        "go": { "smart": 1, "d": { "sec": 12, "rep": 5 },
+          "msg": "IT replies: \"Good catch. That one got 43 people this morning.\" You feel superior for the rest of the day.",
+          "tip": "Reporting phishing protects everyone — IT can block the sender before your coworkers click it." } },
+      { "label": "REPLY \"UNSUBSCRIBE\"",
+        "go": { "oops": 1, "d": { "sec": -8, "energy": -6 },
+          "msg": "You have confirmed to the scammers that your inbox is alive and staffed by an optimist. Spam volume triples.",
+          "tip": "Replying to spam — even to unsubscribe — verifies your address is active. Delete or report instead." } },
+      { "label": "DELETE IT",
+        "go": { "d": {},
+          "msg": "Deleted. The safest button on the keyboard.",
+          "tip": "Deleting works. Reporting works better — it protects the 43 coworkers about to click it." } }
+    ]
+  },
+  {
+    "id": "usb", "title": "A WILD USB APPEARS", "icon": "usb",
+    "text": "In the car park, glinting in the sun: a USB stick. Handwritten label: <span class=\"dim\">\"STAFF SALARIES — CONFIDENTIAL\"</span>.",
+    "hint": "Attackers drop these on purpose. It’s called baiting. It works terrifyingly often.",
+    "choices": [
+      { "label": "PLUG IT IN. FOR SCIENCE.",
+        "go": { "branches": [
+          { "roll": 0.25, "death": {
+            "cause": "plugged in the forbidden USB", "title": "YOUR LAPTOP HAS EXPLODED",
+            "msg": "It was a USB killer — a capacitor bank in a thumb-drive costume. It dumps 200 volts into your laptop, which dies with a sad pop and a wisp of smoke. IT frames the corpse as a warning to others.",
+            "tip": "USB killers are real €50 devices. Malicious USBs can also emulate keyboards and type commands faster than you can react. Never plug in unknown drives." } },
+          { "roll": 0.8, "setFlag": "malware", "oops": 1, "d": { "sec": -35 },
+            "msg": "The folder is empty. Weird. What you can’t see: the stick pretended to be a keyboard and typed a command in 0.4 seconds. Something is now living in your laptop.",
+            "tip": "\"Rubber ducky\" USBs emulate keyboards — no autorun needed, no warning shown. If you find a drive, give it to IT. Unopened." },
+          { "oops": 1, "d": { "rep": -8 },
+            "msg": "It’s 400 photos of a stranger’s cat. You have risked the entire company for a cat named Baguette. You tell no one. IT finds out anyway.",
+            "tip": "You got lucky. Studies show ~45% of dropped USBs get plugged in. Attackers know this." }
+        ] } },
+      { "label": "HAND IT TO IT",
+        "go": { "smart": 1, "d": { "sec": 8, "rep": 8 },
+          "msg": "IT opens it in a sacrificial air-gapped laptop from 2011. It was malware. You are briefly a hero, which at this company means someone nods at you.",
+          "tip": "IT has isolated machines for exactly this. Found hardware always goes to them." } },
+      { "label": "LEAVE IT. WALK AWAY.",
+        "go": { "d": {},
+          "msg": "You leave it in the car park. An intern picks it up an hour later. That is now the intern’s origin story, not yours.",
+          "tip": "Not your problem is a valid security strategy — but handing it to IT protects the next person." } }
+    ]
+  },
+  {
+    "id": "aicall", "title": "INCOMING CALL", "icon": "phone", "roles": ["intern", "manager", "itadmin"],
+    "text": "Your phone rings. It’s the CEO’s voice — exactly the CEO’s voice.<br><br>\"{name}! Thank god. I’m at the airport, my card’s blocked, huge client emergency. I need you to buy $800 in gift cards and text me the codes. You’re the only one I trust.\"",
+    "hint": "Voice cloning needs about 3 seconds of audio. Your CEO did a podcast.",
+    "choices": [
+      { "label": "BUY THE GIFT CARDS",
+        "go": { "branches": [
+          { "ifFlag": "postedQuiz", "death": {
+            "cause": "trusted a robot with the CEO’s voice", "title": "IDENTITY: STOLEN",
+            "msg": "You text the codes. Then they ask to \"verify your identity\" — and thanks to that hacker-name quiz you posted, they already know your mother’s maiden name, first pet and childhood street. By 5pm they ARE you. Your credit score becomes a crime scene.",
+            "tip": "Scammers combine data: a cloned voice + your quiz answers + urgency = full identity theft. No real boss pays clients in gift cards." } },
+          { "oops": 1, "d": { "rep": -25, "energy": -10 },
+            "msg": "You spend your lunch break buying $800 of gift cards at a service station. The real CEO walks past you in the office at 2pm. The math arrives slowly, then all at once.",
+            "tip": "Gift cards are the #1 scam payment method — untraceable and instant. Any \"boss\" asking for them is fake. Every time." }
+        ] } },
+      { "label": "ASK SOMETHING ONLY THE CEO KNOWS",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "\"What did you say at last week’s all-hands?\" …Silence. Then: \"I am boarding now, no time.\" The real CEO would never miss a chance to repeat that speech. Busted.",
+          "tip": "Verification questions defeat voice clones — the AI has the voice, not the memories. Agree on a code word with family too." } },
+      { "label": "HANG UP, CALL THE REAL NUMBER",
+        "go": { "smart": 1, "d": { "sec": 12, "rep": 5 },
+          "msg": "You call the CEO’s actual number. \"Gift cards? I’m at the golf course.\" Verified: scam. Also verified: nobody is working today.",
+          "tip": "Golden rule: hang up and call back on a number YOU already have. Never trust the channel the request came in on." } },
+      { "label": "WASTE THEIR TIME",
+        "go": { "smart": 1, "d": { "energy": -10, "rep": 6 },
+          "msg": "You keep the bot on the line for 25 minutes describing gift card aisle layouts in extreme detail. Every minute you waste is a minute they can’t scam your nan. A noble sacrifice.",
+          "tip": "Scam-baiting is a real hobby. But the safest move is still: hang up, verify, report." } }
+    ]
+  },
+  {
+    "id": "mfa", "title": "PUSH NOTIFICATION STORM", "icon": "phone",
+    "text": "Your phone buzzes. And buzzes. FOURTEEN login-approval requests in two minutes. You are not logging in anywhere.",
+    "hint": "Someone has your password and is spamming MFA hoping you approve out of annoyance.",
+    "choices": [
+      { "label": "APPROVE ONE TO MAKE IT STOP",
+        "go": { "setFlag": "breachedAcct", "oops": 1, "d": { "sec": -35 },
+          "msg": "Sweet silence. Also, someone in a different timezone is now reading your email and has set up an inbox rule to hide the evidence. But the buzzing stopped, so.",
+          "tip": "This is \"MFA fatigue\" — it breached Uber in 2022. An approval request you didn’t cause means your password is already stolen. Never approve to make it stop." } },
+      { "label": "DENY ALL + CHANGE PASSWORD",
+        "go": { "smart": 1, "d": { "sec": 18, "energy": -8 },
+          "msg": "Deny. Deny. Deny. New password. The buzzing stops because the attacker’s stolen password is now worthless. You feel like a wizard closing a portal.",
+          "tip": "Unexpected MFA prompts = your password is compromised. Deny everything and rotate the password immediately." } },
+      { "label": "PUT PHONE IN DRAWER",
+        "go": { "oops": 1, "d": { "sec": -12 },
+          "msg": "Out of sight, out of mind. The attacker keeps trying all week. Eventually they’ll get creative. Or you’ll get careless. It’s a race now.",
+          "tip": "Ignoring it leaves the stolen password valid. The prompts are the smoke alarm — don’t muffle it, find the fire." } }
+    ]
+  },
+  {
+    "id": "wifi", "title": "COFFEE RUN", "icon": "wifi",
+    "text": "The good café. Two networks available:<br><span class=\"dim\">CAFE_GUEST (password on till)<br>Totally_Legit_Free_WiFi_100% (open)</span><br>You need to send one work email.",
+    "hint": "The second network has a name only an attacker would choose. And they did.",
+    "choices": [
+      { "label": "FREE WIFI, OBVIOUSLY",
+        "go": { "oops": 1, "d": { "sec": -18 },
+          "msg": "You connect. The \"network\" is a laptop in a backpack two tables away, reading everything you send like a nosy commuter reading your texts. Your session cookies wave goodbye.",
+          "tip": "\"Evil twin\" hotspots impersonate free wifi to intercept traffic. If you must use public wifi, use a VPN and never log into anything sensitive." } },
+      { "label": "USE PHONE HOTSPOT",
+        "go": { "smart": 1, "d": { "sec": 6, "energy": -4 },
+          "msg": "Your own data, your own network, nobody in the middle. Costs you some battery and 40MB. Cheap.",
+          "tip": "A personal hotspot is almost always safer than public wifi. Your carrier connection is encrypted end to end." } },
+      { "label": "IT CAN WAIT. DRINK COFFEE.",
+        "go": { "d": { "energy": 10 },
+          "msg": "You do nothing, beautifully. The email waits. The coffee does not. Correct priorities.",
+          "tip": "The most secure email is the one sent later from a safe network." } }
+    ]
+  },
+  {
+    "id": "tailgate", "title": "AT THE DOOR", "icon": "door",
+    "text": "A man in a hi-vis vest, hard hat, and a box of donuts is behind you at the secure door. \"Hands full, mate — hold it open?\" You have never seen him before.",
+    "hint": "Hi-vis vest: the +10 cloak of social invisibility. No work order on file today.",
+    "choices": [
+      { "label": "HOLD THE DOOR. BE POLITE.",
+        "go": { "branches": [
+          { "roll": 0.5, "setFlag": "intruder", "oops": 1, "d": { "sec": -20 },
+            "msg": "He thanks you warmly and walks straight past reception, past the offices, and into the server room. The donuts were props. THE DONUTS WERE PROPS.",
+            "tip": "\"Tailgating\" beats million-dollar door systems with a $12 vest and human politeness. Everyone badges in. Everyone." },
+          { "oops": 1, "d": { "sec": -5 },
+            "msg": "He was, in fact, here to fix the aircon. This time. You gambled the entire building on donuts.",
+            "tip": "He was legit — but you had no way to know. The policy exists so you never have to gamble." }
+        ] } },
+      { "label": "\"CAN I SEE YOUR BADGE?\"",
+        "go": { "smart": 1, "d": { "sec": 12, "rep": -3 },
+          "msg": "\"Ugh, fine.\" He has a visitor pass… from 2023. You walk him to reception. He is very annoyed, which is fine, because annoyed is not the same as inside the server room.",
+          "tip": "Challenging strangers feels rude and IS correct. Real staff won’t mind. Fake staff will suddenly remember an appointment elsewhere." } },
+      { "label": "TAKE A DONUT, CLOSE THE DOOR",
+        "go": { "smart": 1, "d": { "energy": 8, "sec": 8 },
+          "msg": "You accept one (1) donut, say \"reception’s round the front, mate,\" and let the door click shut. Security AND breakfast. A perfect play.",
+          "tip": "You can be friendly and secure simultaneously. Direct visitors to reception — with or without pastry tax." } }
+    ]
+  },
+  {
+    "id": "update", "title": "UPDATE AVAILABLE", "icon": "laptop",
+    "text": "Your laptop, at the worst possible moment:<br><span class=\"dim\">\"Security update available. Restart required. (Est. 11 minutes)\"</span>",
+    "hint": "This one is real. Genuinely from the OS. Patch it.",
+    "choices": [
+      { "label": "INSTALL NOW",
+        "go": { "smart": 1, "d": { "sec": 14, "energy": -5 },
+          "msg": "Eleven minutes of staring at a progress bar that goes 0→30→31→99→done. Somewhere, an exploit that would have worked on you yesterday quietly dies.",
+          "tip": "Most successful attacks exploit bugs that were already patched — on machines that hadn’t updated. Boring updates are elite security." } },
+      { "label": "REMIND ME TOMORROW (FOREVER)",
+        "go": { "setFlag": "unpatched", "oops": 1, "d": { "sec": -12 },
+          "msg": "You click \"later\" with the practiced speed of someone who has clicked \"later\" 340 consecutive times. The vulnerability stays open, like a window in a storm.",
+          "tip": "\"Remind me later\" is how machines stay vulnerable for months. Patch Tuesday exists because Exploit Wednesday does too." } }
+    ]
+  },
+  {
+    "id": "password", "title": "PASSWORD EXPIRY", "icon": "note",
+    "text": [
+      { "ifRole": "ceo", "t": "IT decrees: password change, today. Your current one is <span class=\"dim\">\"Password1\"</span>, which hurts to even read." },
+      { "t": "IT decrees: password change, today. Your current one is <span class=\"dim\">\"Winter2025!\"</span>, which hurts to even read." }
+    ],
+    "choices": [
+      { "label": "\"SPRING2026!\" — EASY",
+        "go": { "oops": 1, "d": { "sec": -10 },
+          "msg": "Incremented like a true professional. Attackers’ cracking tools literally try seasonal rotations first. You are pattern #1 on the list.",
+          "tip": "Season+Year+! is the most predicted password format on earth. If a pattern is easy to remember, it’s easy to guess." } },
+      { "label": "FOUR RANDOM WORDS",
+        "go": { "smart": 1, "d": { "sec": 15 },
+          "msg": "\"correct-frog-battery-staple\". 25 characters, memorable, and would take a computer several universes to brute-force. The frog is a nice touch.",
+          "tip": "Long beats complex: a 4-word passphrase is stronger than \"P@ssw0rd!\" and you’ll actually remember it." } },
+      { "label": "PASSWORD MANAGER",
+        "go": { "smart": 1, "d": { "sec": 20, "energy": -5 },
+          "msg": "Twenty minutes of setup, and now every account has a unique 24-character password you never have to know. Future-you sends their thanks.",
+          "tip": "A password manager means one breach can’t unlock your whole life. Unique passwords everywhere, remembered nowhere." } },
+      { "label": "STICKY NOTE ON MONITOR",
+        "go": { "setFlag": "stickyNote", "oops": 1, "d": { "sec": -15 },
+          "msg": "Beautiful handwriting. Prime monitor real estate. Visible from the window, the doorway, and every video call you will ever take.",
+          "tip": "Sticky-note passwords appear in the background of news interviews so often it’s a genre. Anyone who sees your desk sees your password." } }
+    ]
+  },
+  {
+    "id": "fakeit", "title": "INCOMING CALL: \"IT SUPPORT\"", "icon": "phone",
+    "text": "\"Hello, IT department. We’ve detected a virus on your machine. Don’t worry — just install a small remote access tool and we’ll clean it for you.\"",
+    "hint": "IT never cold-calls about viruses. Also this man has a hold-music playlist of ocean sounds.",
+    "choices": [
+      { "label": "INSTALL THE TOOL",
+        "go": { "death": {
+          "cause": "gave a stranger the keyboard", "title": "DATABASE: DELETED",
+          "msg": "You install it. Your cursor starts moving on its own — opening folders, admin panels, the production database. You watch, frozen, as someone types DROP DATABASE with your hands. The company’s entire database evaporates. On the plus side, there is now much less data to protect.",
+          "tip": "Remote-access scams start with a fake \"we detected a virus\" call. Real IT never cold-calls demanding remote access. Hang up and ring IT on the internal number." } } },
+      { "label": "\"WHAT’S MY TICKET NUMBER?\"",
+        "go": { "smart": 1, "d": { "sec": 12 },
+          "msg": "\"It’s… uh… ticket… seven?\" Click. You report the number to actual IT, who add it to a wall of shame they apparently keep.",
+          "tip": "Real support has a ticket, your name, and your asset number. Scammers have vibes and urgency." } },
+      { "label": "HANG UP IMMEDIATELY",
+        "go": { "smart": 1, "d": { "sec": 6 },
+          "msg": "You hang up mid-sentence. Rude? To a criminal? Etiquette says that’s fine, actually.",
+          "tip": "You owe cold-callers nothing. Hang up, then verify through official channels if worried." } }
+    ]
+  },
+  {
+    "id": "deepfake", "title": "VIDEO CALL: CFO", "icon": "zoom",
+    "text": "The CFO video-calls, urgently. \"I need you to wire $2M to close the acquisition. Today. Total secrecy.\" The video is… slightly off. They haven’t blinked in 40 seconds.",
+    "hint": "Deepfakes struggle with side profiles and hands. Also the CFO is on leave in Bali.",
+    "choices": [
+      { "label": "WIRE THE $2,000,000",
+        "go": { "death": {
+          "cause": "wired $2M to a screensaver", "title": "FUNDS: TRANSFERRED",
+          "msg": "You send it. The \"CFO\" thanks you and dissolves into pixels. In 2024 a real company lost $25M this exact way — an entire video call of deepfaked executives. Yours only cost $2M, but the board declines to grade on a curve.",
+          "tip": "Deepfake video fraud is real and current. Verify big transfers through a separate channel — call back on a known number, no matter how senior the face." } } },
+      { "label": "\"CAN YOU TURN YOUR HEAD SIDEWAYS?\"",
+        "go": { "smart": 1, "d": { "sec": 15, "rep": 5 },
+          "msg": "The \"CFO\"’s face smears like wet paint, flickers, and drops the call. You screenshot it for the group chat. Legendary.",
+          "tip": "Asking for side profiles, hand waves, or unusual movement breaks most real-time deepfakes. So does verifying out-of-band." } },
+      { "label": "\"I’LL CALL YOU BACK ON YOUR CELL\"",
+        "go": { "smart": 1, "d": { "sec": 12 },
+          "msg": "The real CFO answers from a beach: \"What wire? I’m holding a coconut.\" Scam confirmed, coconut confirmed.",
+          "tip": "Out-of-band verification defeats every impersonation: clone the voice, fake the face — they still can’t answer the real phone." } }
+    ]
+  },
+  {
+    "id": "quiz", "title": "SOCIAL MEDIA", "icon": "badge",
+    "text": "A viral post: <span class=\"dim\">\"Your HACKER NAME is your mother’s maiden name + your first pet + the street you grew up on! Drop yours below 👇\"</span> 6,000 comments.",
+    "hint": "Those are three literal password-recovery questions in a trench coat.",
+    "choices": [
+      { "label": "POST \"SMITH WHISKERS MAPLE\"",
+        "go": { "setFlag": "postedQuiz", "oops": 1, "d": { "sec": -15 },
+          "msg": "Great hacker name. Also the exact answers to your bank’s security questions, now public, timestamped, and attached to your real name. Somewhere a scammer bookmarks your profile.",
+          "tip": "\"Fun quizzes\" harvesting maiden names, pets, and streets are recovery-question farming. Treat security answers like passwords — or lie on them." } },
+      { "label": "SCROLL PAST",
+        "go": { "d": {},
+          "msg": "You keep scrolling. Your mother’s maiden name remains, as intended, none of the internet’s business.",
+          "tip": "The safest engagement is none. Recovery answers are passwords wearing a nostalgia costume." } },
+      { "label": "COMMENT \"NICE TRY, SCAMMERS\"",
+        "go": { "smart": 1, "d": { "rep": 5 },
+          "msg": "Three coworkers quietly delete their comments. You have saved them and they will never admit it.",
+          "tip": "Calling it out helps — most people genuinely don’t realize these quizzes are harvesting recovery answers." } }
+    ]
+  },
+  {
+    "id": "printer", "title": "THE PRINTER", "icon": "printer",
+    "text": "The printer displays: <span class=\"dim\">PC LOAD LETTER</span>. It has your document. It will not give you your document. It is 9 pages into a 10 page job.",
+    "choices": [
+      { "label": "FIGHT THE PRINTER",
+        "go": { "branches": [
+          { "roll": 0.5, "d": { "energy": -10, "rep": 6 },
+            "msg": "You open four hatches, turn a mysterious green wheel, and extract the jam like a surgeon. Onlookers applaud quietly. Today, you are IT.",
+            "tip": "No security tip. Some battles are just personal." },
+          { "d": { "energy": -14 },
+            "msg": "You now have toner on both hands, one cheek, and somehow the back of your shirt. The printer prints page 10 the moment you give up. It knew.",
+            "tip": "No security tip. The printer simply won today." }
+        ] } },
+      { "label": "CALL IT. WALK AWAY.",
+        "go": { "d": { "energy": -4 },
+          "msg": "You log a ticket. Estimated response: Thursday. You email the PDF instead like a modern person.",
+          "tip": "Fun fact: office printers store copies of print jobs and are a real hacking target. Yours is mostly just evil, though." } }
+    ]
+  },
+  {
+    "id": "shadow", "title": "SHADOW IT", "icon": "db",
+    "text": "A coworker DMs: \"SharePoint is being slow so I put the whole client folder on my personal Dropbox lol, here’s the link, sooo much faster\"",
+    "hint": "The client contract specifically prohibits exactly this. Page 12. In bold.",
+    "choices": [
+      { "label": "\"OMG SO FAST\" (USE IT)",
+        "go": { "oops": 1, "d": { "sec": -15 },
+          "msg": "It IS faster. Client data now lives on a personal account with the password \"dropbox123\", shared via a link that never expires, forever. Speed has a price.",
+          "tip": "\"Shadow IT\" — unapproved apps — causes a huge share of real breaches. Company data stays on company systems, even slow ones." } },
+      { "label": "CONVINCE THEM TO MOVE IT BACK",
+        "go": { "smart": 1, "d": { "sec": 12, "energy": -6 },
+          "msg": "You explain, kindly, that \"the client can sue us\" beats \"SharePoint is slow.\" They move it back, grumbling. Friendship intact, contract intact.",
+          "tip": "Fixing it beats reporting it — most shadow IT is convenience, not malice. Offer the approved fast path." } },
+      { "label": "REPORT IT TO SECURITY",
+        "go": { "smart": 1, "d": { "sec": 10, "rep": -6 },
+          "msg": "The data gets pulled back within the hour. Your coworker now says \"good morning\" with detectable frost. Correct is not always popular.",
+          "tip": "When client data is exposed, speed matters more than feelings. Report it — the breach clock is already ticking." } }
+    ]
+  },
+  {
+    "id": "invoice", "title": "VENDOR EMAIL", "icon": "mail",
+    "text": "From your paper supplier (real company, real ongoing order):<br><span class=\"dim\">\"Please note our bank details have changed. Kindly settle the attached invoice ($18,400) to the new account.\"</span>",
+    "hint": "The reply-to domain is one letter off. Suppl1er, not supplier.",
+    "choices": [
+      { "label": "FORWARD TO FINANCE: \"PLS PAY\"",
+        "go": { "oops": 1, "d": { "rep": -18, "sec": -10 },
+          "msg": "Finance pays it, because you vouched. The real supplier calls two weeks later asking where their money is. The answer is \"a bank account in a country with no extradition treaty.\"",
+          "tip": "\"New bank details\" emails are Business Email Compromise — billions lost yearly. ALWAYS verify account changes by phone with a known contact." } },
+      { "label": "CALL THE SUPPLIER’S KNOWN NUMBER",
+        "go": { "smart": 1, "d": { "sec": 14, "rep": 8 },
+          "msg": "\"Bank change? We sent no such email.\" Their inbox was hijacked. You just saved $18,400 with one phone call, a return on investment finance will actually understand.",
+          "tip": "Verify payment changes on a number from your records — never the one in the email. The email’s number rings the scammer." } },
+      { "label": "PAY IT YOURSELF TO BE HELPFUL",
+        "go": { "oops": 1, "d": { "rep": -12 },
+          "msg": "You do not have payment authority. You attempt to acquire payment authority. Finance now has a folder with your name on it.",
+          "tip": "Payment controls exist precisely to stop one rushed person wiring money to strangers. The bureaucracy is the firewall." } }
+    ]
+  },
+  {
+    "id": "sticky", "title": "UNDER THE KEYBOARD", "icon": "note",
+    "text": "Retrieving a pen from the CFO’s desk, you find a sticky note under the keyboard: <span class=\"dim\">\"M0neyM4n2024!\"</span>. That is… definitely a password.",
+    "choices": [
+      { "label": "\"JUST TEST IF IT WORKS\"",
+        "go": { "death": {
+          "cause": "tested a password that was not theirs", "title": "ACCESS: REVOKED. EMPLOYMENT: ALSO.",
+          "msg": "It works! It also fires an alert to Security, because logging into the CFO’s account from your machine at 2pm is not subtle. HR calls it \"unauthorized access.\" The police call it the same thing, actually.",
+          "tip": "Using found credentials is a crime, not a test — even with good intentions. Report found passwords; never try them." } } },
+      { "label": "TELL THE CFO QUIETLY",
+        "go": { "smart": 1, "d": { "rep": 10, "sec": 8 },
+          "msg": "The CFO goes pale, eats the sticky note (nearly), and changes the password within minutes. You have banked one (1) executive favor.",
+          "tip": "Discreetly reporting exposed credentials protects the person AND the company. The sticky note under the keyboard is the first place anyone looks." } },
+      { "label": "PHOTOGRAPH IT \"FOR EVIDENCE\"",
+        "go": { "oops": 1, "d": { "sec": -12, "rep": -8 },
+          "msg": "You now have an executive’s password on a phone that backs up to three clouds. The evidence has become the crime scene.",
+          "tip": "Never copy credentials, even to report them. Describe where it is and let the owner destroy it." } }
+    ]
+  },
+  {
+    "id": "ext", "title": "BROWSER EXTENSION", "icon": "laptop",
+    "text": "\"COOLCURSORS 3D — make your cursor a FLAMING SWORD! ⭐ 50,000 five-star reviews!\" It wants permission to: <span class=\"dim\">read and change all data on all websites.</span>",
+    "choices": [
+      { "label": "FLAMING SWORD. NO QUESTIONS.",
+        "go": { "setFlag": "adware", "oops": 1, "d": { "sec": -14 },
+          "msg": "The sword is glorious for one day. Then the extension updates itself and starts \"monetizing\" — injecting ads and skimming every form you fill. The sword was never free.",
+          "tip": "\"Read and change all data on all websites\" means exactly that — including your banking tab. Extensions get sold to shady buyers and turned malicious via silent updates." } },
+      { "label": "READ THE PERMISSIONS. DECLINE.",
+        "go": { "smart": 1, "d": { "sec": 8 },
+          "msg": "A cursor toy wanting your banking passwords is a red flag with a flaming sword on it. You close the tab. Your boring cursor keeps your secrets.",
+          "tip": "Judge extensions by permissions, not reviews. Reviews can be bought; permissions can’t be hidden." } }
+    ]
+  },
+  {
+    "id": "qr", "title": "POSTER IN THE LOBBY", "icon": "qr",
+    "text": "A crisp new poster: <span class=\"dim\">\"FREE PIZZA FRIDAY 🍕 — scan to RSVP!\"</span> with a big QR code. No one in facilities remembers approving it.",
+    "hint": "The QR sticker is slightly crooked — stuck over the original code.",
+    "choices": [
+      { "label": "SCAN IT. PIZZA IS PIZZA.",
+        "go": { "oops": 1, "d": { "sec": -14 },
+          "msg": "The \"RSVP form\" wants your name, email, and — to \"verify employment\" — your login. There is no pizza. There was never pizza. The pizza was inside the phishers all along.",
+          "tip": "\"Quishing\" — QR phishing — works because you can’t read a QR code with your eyes. Check the URL preview before opening, and be wary of stickers over stickers." } },
+      { "label": "CHECK THE URL PREVIEW FIRST",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "Your camera shows the link: <span class=\"dim\">pizza-rsvp.sketchy-forms.ru</span>. The company does not host lunch signups in that particular jurisdiction. You peel the sticker off and find the real code underneath.",
+          "tip": "Always read the URL preview before opening a scanned code — that preview is the only inspection a QR gets." } },
+      { "label": "ASK RECEPTION ABOUT THE PIZZA",
+        "go": { "smart": 1, "d": { "energy": 5, "sec": 5 },
+          "msg": "Reception: \"What pizza?\" The poster comes down. As an apology to your hopes, reception gives you a biscuit.",
+          "tip": "Verifying with a human beats scanning a mystery. Also: report fake posters — someone physically walked in to place it." } }
+    ]
+  },
+  {
+    "id": "kiosk", "title": "BATTERY: 4%", "icon": "cable",
+    "text": "Your phone is dying and your charger is at home. The lobby has a public <span class=\"dim\">\"FREE USB CHARGING KIOSK\"</span>. Your phone. Its port. A choice.",
+    "choices": [
+      { "label": "PLUG STRAIGHT IN",
+        "go": { "oops": 1, "d": { "sec": -10 },
+          "msg": "\"Trust this computer?\" your phone asks. Wait — computer? A charger shouldn’t be a computer. You’ve already tapped Allow, though, because the button was where your thumb was.",
+          "tip": "\"Juice jacking\" uses data pins in public USB ports. Carry your own plug, use a wall socket, or a data-blocker adapter. And never tap \"Trust\" on a charger." } },
+      { "label": "WALL SOCKET + OWN PLUG",
+        "go": { "smart": 1, "d": { "sec": 5, "energy": -3 },
+          "msg": "You borrow a wall plug from the receptionist. Pure electrons, zero data pins, no questions asked.",
+          "tip": "AC power can’t read your phone. USB can. When in doubt, take the boring socket." } },
+      { "label": "LET IT DIE. BE FREE.",
+        "go": { "d": { "energy": 6 },
+          "msg": "The phone dies at 2:14pm. The silence is… lovely? You read a printed document like it’s 1997. Two hours pass peacefully.",
+          "tip": "The most secure device is one that’s off. Not practical, but briefly, wonderfully true." } }
+    ]
+  },
+  {
+    "id": "lock", "title": "COFFEE RUN (DESK EDITION)", "icon": "laptop",
+    "text": "You’re getting up for coffee. Your laptop is unlocked, logged in, and your email is open. You’ll be gone \"two minutes.\"",
+    "choices": [
+      { "label": "LOCK IT (WIN+L)",
+        "go": { "smart": 1, "d": { "sec": 8 },
+          "msg": "Two keys, half a second, screen locked. The world’s highest ratio of effort to protection.",
+          "tip": "Lock on every walk-away, no exceptions. Win+L / Ctrl+Cmd+Q. Muscle memory is a security control." } },
+      { "label": "\"IT’S LITERALLY 2 MINUTES\"",
+        "go": { "branches": [
+          { "ifFlag": "intruder", "oops": 1, "d": { "sec": -25 },
+            "msg": "Remember the donut man? He’s still in the building. He spends your two minutes at your unlocked machine, and he is not sending Nickelback emails.",
+            "tip": "An unlocked screen is an open door. Combined with an intruder in the building, it’s a breach." },
+          { "oops": 1, "d": { "rep": -12 },
+            "msg": "You return to find an email sent to ALL STAFF from your account: \"I love Nickelback and I’m not ashamed.\" 47 replies. IT calls this \"getting hacked by the office.\" HR calls it Tuesday.",
+            "tip": "The prank email is the friendly version of this lesson. The unfriendly version doesn’t announce itself." }
+        ] } }
+    ]
+  },
+  {
+    "id": "survey", "title": "PHONE SURVEY", "icon": "phone",
+    "text": "\"Hi! Quick 2-minute IT satisfaction survey! First: what antivirus does your company use? And which VPN? And who’s your IT provider? And—\"",
+    "hint": "That’s not a survey. That’s a shopping list for an attack.",
+    "choices": [
+      { "label": "ANSWER HONESTLY. BE HELPFUL.",
+        "go": { "oops": 1, "d": { "sec": -14 },
+          "msg": "You’ve just handed over the company’s exact defensive lineup. Next week’s phishing emails will be dressed as your antivirus vendor, and they will fit perfectly.",
+          "tip": "Recon calls harvest tech-stack details to tailor attacks. Your software list is confidential — \"we don’t share that\" is a full sentence." } },
+      { "label": "FEED THEM NONSENSE",
+        "go": { "smart": 1, "d": { "sec": 6, "rep": 3 },
+          "msg": "\"We use Norton ’98, our VPN is a very long ethernet cable, and IT is run by a man named Craig who communicates only by fax.\" They hang up first. Victory.",
+          "tip": "Disinformation is fun, but hanging up is fine too. Just never give real details to inbound callers." } },
+      { "label": "HANG UP",
+        "go": { "smart": 1, "d": { "sec": 5 },
+          "msg": "Click. The survey had one question that mattered and you didn’t answer it.",
+          "tip": "Unsolicited callers asking about internal systems = reconnaissance. Report the number to IT." } }
+    ]
+  },
+  {
+    "id": "ooo", "title": "OUT OF OFFICE", "icon": "mail",
+    "text": "You’re off-site tomorrow morning. Time to set the auto-reply. How much do you tell literally anyone who emails you, including strangers and scammers?",
+    "choices": [
+      { "label": "FULL ITINERARY + WHO COVERS + THEIR CELL",
+        "go": { "setFlag": "oooLeak", "oops": 1, "d": { "sec": -10 },
+          "msg": "Your auto-reply now tells any scammer exactly when you’re unreachable, who’s covering, and how to reach them. It’s an attack manual that sends itself.",
+          "tip": "Detailed OOO replies fuel impersonation: \"Hi, {name} said you’re covering — they approved this urgent payment before flying…\" Keep auto-replies vague." } },
+      { "label": "\"BACK TOMORROW PM.\" NOTHING ELSE.",
+        "go": { "smart": 1, "d": { "sec": 6 },
+          "msg": "Minimal, mysterious, secure. Colleagues who need details already have them. Strangers get nothing.",
+          "tip": "An auto-reply goes to everyone, including attackers. Give internal detail internally, and the public nothing." } }
+    ]
+  },
+  {
+    "id": "meeting", "title": "CALENDAR ALERT", "icon": "clock",
+    "text": "<span class=\"dim\">\"Q3 SYNERGY ALIGNMENT TOUCHPOINT — starts in 2 min — 1 hour\"</span><br>There is no agenda. There is never an agenda.",
+    "choices": [
+      { "label": "ATTEND. CAMERA ON.",
+        "go": { "d": { "energy": -12, "rep": 8 },
+          "msg": "You nod at appropriate intervals for one hour. Someone says \"let’s take this offline\" about a thing that was never online. Your reputation as a Team Player grows. Your soul does not.",
+          "tip": "No security tip. This meeting could have been an email, and everyone in it knows." } },
+      { "label": "ATTEND. CAMERA OFF. LIVE FREE.",
+        "go": { "d": { "energy": -5, "rep": 2 },
+          "msg": "\"Camera’s not working today!\" you say, camera working perfectly. You do stretches. You water a plant. Someone says your name and you unmute with the reflexes of a fighter pilot: \"agreed.\"",
+          "tip": "Do periodically check what’s visible behind you on calls though — whiteboards and sticky notes have leaked real secrets on camera." } }
+    ]
+  },
+  {
+    "id": "darkweb", "title": "BREACH ALERT", "icon": "skull",
+    "cond": { "anyFlag": ["credsLeaked"] },
+    "text": "An automated alert: your work email and a password appear in a fresh dark-web dump. The password listed is… yours. From that \"payroll\" link. It’s selling for $4.",
+    "hint": "Four dollars. Not even surge pricing.",
+    "choices": [
+      { "label": "CHANGE PASSWORD EVERYWHERE + TELL IT",
+        "go": { "clearFlag": "credsLeaked", "smart": 1, "d": { "sec": 15, "energy": -8 },
+          "msg": "New passwords, MFA re-checked, IT notified. The $4 listing is now worthless. The hacker leaves a one-star review of your credentials.",
+          "tip": "Speed matters after a leak: rotate the password everywhere you reused it (this is why we don’t reuse), and enable MFA." } },
+      { "label": "\"$4? THAT’S INSULTING.\" IGNORE.",
+        "go": { "oops": 1, "d": { "sec": -20 },
+          "msg": "Someone pays the $4. It works. Worst return on investment in company history, and it isn’t the hacker’s.",
+          "tip": "Leaked credentials get tested automatically within hours. Ignoring a breach alert is choosing to be breached." } }
+    ]
+  },
+  {
+    "id": "smish", "title": "TEXT MESSAGE", "icon": "phone",
+    "text": "Your phone: <span class=\"dim\">\"AusPost: Your parcel is held at our facility. Pay $1.20 redelivery fee: aus-post-track.delivery-notice.top\"</span><br><br>You are, admittedly, expecting a parcel.",
+    "hint": "Real carriers don’t charge $1.20 by text link. The fee is bait — they want the card, not the coin.",
+    "choices": [
+      { "label": "PAY THE $1.20. IT’S $1.20.",
+        "go": { "oops": 1, "d": { "sec": -16 },
+          "msg": "You enter your full card details to save $1.20. The charge that matters arrives three days later, from an electronics store in a country you cannot point to on a map.",
+          "tip": "\"Smishing\" fees are never about the fee — the form harvests your whole card. Track parcels only in the carrier’s official app." } },
+      { "label": "CHECK THE CARRIER’S APP",
+        "go": { "smart": 1, "d": { "sec": 8 },
+          "msg": "The official app says your parcel is on the truck, no fee, arriving today. The text was fiction with a payment form attached.",
+          "tip": "Golden rule for delivery texts: never the link, always the app. If a parcel is real, it exists there too." } },
+      { "label": "DELETE + REPORT JUNK",
+        "go": { "smart": 1, "d": { "sec": 5 },
+          "msg": "Reported and deleted. Somewhere, a scam operation’s spreadsheet marks your number \"no fun.\"",
+          "tip": "Reporting scam texts trains carrier filters and protects whoever they text next." } }
+    ]
+  },
+  {
+    "id": "recruiter", "title": "DREAM JOB ALERT", "icon": "mail",
+    "text": "A LinkedIn message: <span class=\"dim\">\"Hi {name}! I was BLOWN AWAY by your profile. Senior role, double your salary, fully remote. Just complete the attached skills assessment: SkillsTest_Setup.exe\"</span>",
+    "hint": "Recruiters send calendar links, not .exe files. Also “blown away” by a profile you haven’t updated since 2023?",
+    "choices": [
+      { "label": "RUN THE SKILLS TEST",
+        "go": { "setFlag": "malware", "oops": 1, "d": { "sec": -28 },
+          "msg": "The \"assessment\" is a loading bar that goes to 100% and vanishes. There are no questions. There is no job. There IS now something new running on your laptop, and it passed its skills test with flying colors.",
+          "tip": "Fake-recruiter malware targets employees precisely because flattery lowers defenses. No legitimate hiring process starts with running an executable." } },
+      { "label": "LOOK UP THE RECRUITER FIRST",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "The \"recruiter\" joined LinkedIn nine days ago, has 14 connections, and their profile photo appears on four other profiles with four other names. Blocked.",
+          "tip": "Verify recruiters: company domain email, real history, mutual connections. AI-generated faces and week-old profiles are the tell." } },
+      { "label": "SEND CV TO THEIR GMAIL",
+        "go": { "oops": 1, "d": { "sec": -8 },
+          "msg": "You email your CV — full name, phone, address, employment history — to a stranger’s gmail. It’s not malware, but someone now has a beautifully formatted dossier on you.",
+          "tip": "A CV is a social-engineering starter kit: your history, skills, and contacts. Share it with verified companies, not enthusiastic strangers." } }
+    ]
+  },
+  {
+    "id": "bank", "title": "CALL FROM \"YOUR BANK\"", "icon": "phone",
+    "text": "\"This is the fraud team. Someone is draining your account RIGHT NOW. We need to move your money to a safe account immediately — I’ll read you the details. Please stay calm, but hurry.\"",
+    "hint": "Banks never ask you to move money to a “safe account.” The safe account is the scam.",
+    "choices": [
+      { "label": "TRANSFER TO THE SAFE ACCOUNT",
+        "go": { "death": {
+          "cause": "moved their savings somewhere “safe”", "title": "SAVINGS: RELOCATED",
+          "msg": "You transfer everything to the \"safe account.\" The line goes dead. Your actual bank confirms there was never any fraud — until thirty seconds ago, when you authorized all of it. The money is gone, the scammer’s account is empty, and the transfer was, legally, made by you.",
+          "tip": "The \"safe account\" scam causes some of the largest individual losses in the world. Banks NEVER ask you to move money. Hang up and call the number on your card." } } },
+      { "label": "HANG UP. CALL NUMBER ON CARD.",
+        "go": { "smart": 1, "d": { "sec": 14 },
+          "msg": "The real bank: \"No fraud on your account, and that call wasn’t us.\" You’ve just dodged the single most expensive phone call available to consumers.",
+          "tip": "Always end the call and dial the bank yourself on the number printed on your card. Scammers can spoof caller ID; they can’t answer the real line." } },
+      { "label": "\"PROVE YOU’RE THE BANK\"",
+        "go": { "oops": 1, "d": { "sec": -10 },
+          "msg": "They read out your name, the last four digits of your card, and your recent coffee purchase. Convincing! Also all available from a data breach and a stolen receipt. You stay on the line ten more dangerous minutes before doubt saves you.",
+          "tip": "Scammers pass \"prove it\" tests using breached data. The only real verification is hanging up and calling back on an official number." } }
+    ]
+  },
+  {
+    "id": "aipaste", "title": "DEADLINE VS ROBOT", "icon": "laptop",
+    "text": "A 90-page client contract needs summarizing by 3pm. A shiny website offers: <span class=\"dim\">\"FREE AI SUMMARIZER — paste any document!\"</span> The contract is marked CONFIDENTIAL in three places.",
+    "hint": "Free tools keep what you paste. That’s the price. The contract’s confidentiality clause is on page 2.",
+    "choices": [
+      { "label": "PASTE ALL 90 PAGES",
+        "go": { "oops": 1, "d": { "sec": -18, "rep": -10 },
+          "msg": "Great summary! Also, a confidential merger contract now lives on an unknown company’s servers, possibly as future training data. The summary took 8 seconds. Explaining this to legal takes considerably longer.",
+          "tip": "Anything pasted into a free online tool leaves your control forever. Confidential data goes only into tools your company has approved — read the retention policy, or assume the worst." } },
+      { "label": "USE THE APPROVED INTERNAL TOOL",
+        "go": { "smart": 1, "d": { "sec": 10, "energy": -4 },
+          "msg": "The company’s sanctioned AI tool does the same job inside the firewall. Slightly uglier interface, infinitely fewer lawyers involved.",
+          "tip": "The approved tool exists so you get the speed without the leak. If there isn’t one, that’s a request to IT — not a green light for random websites." } },
+      { "label": "READ IT YOURSELF. LIKE AN ANIMAL.",
+        "go": { "smart": 1, "d": { "energy": -14, "rep": 5 },
+          "msg": "Ninety pages. Your eyes ache. But your summary includes the weird clause on page 61 that no robot flagged, and the client notices.",
+          "tip": "No security tip — just respect. Sometimes the secure option and the thorough option are the same tired option." } }
+    ]
+  },
+  {
+    "id": "sharescreen", "title": "CLIENT PRESENTATION", "icon": "zoom",
+    "text": "Big client call. Time to share your screen. Your desktop currently contains: the deck, your email, a chat window, and a browser tab you would describe as \"personal.\"",
+    "hint": "Share the window, not the screen. Notifications love an audience.",
+    "choices": [
+      { "label": "SHARE ENTIRE SCREEN. YOLO.",
+        "go": { "oops": 1, "d": { "rep": -15 },
+          "msg": "Slide 3 is going great when a chat notification slides in: <span class=\"dim\">\"is the client being weird again or is it just me lol\"</span>. From you. About them. The silence has texture.",
+          "tip": "Screen-sharing leaks are a real breach category — credentials, salaries, and worse have all aired live. Share the single window, and mute notifications before every call." } },
+      { "label": "SHARE THE SINGLE WINDOW",
+        "go": { "smart": 1, "d": { "rep": 8, "sec": 5 },
+          "msg": "The client sees the deck and only the deck. Your chats, tabs, and secrets stay backstage where they belong.",
+          "tip": "Window-sharing is the seatbelt of presentations: one click, prevents disasters. Do-not-disturb mode is the airbag." } }
+    ]
+  },
+  {
+    "id": "wrongdave", "title": "SENT.", "icon": "mail",
+    "text": "You email the salary review sheet to Dave in Finance. Autocomplete had other plans: it went to <span class=\"dim\">Dave Hendricks (EXTERNAL — Hendricks Catering)</span>. The whoosh sound has never sounded so final.",
+    "choices": [
+      { "label": "PRETEND IT NEVER HAPPENED",
+        "go": { "oops": 1, "d": { "sec": -15, "rep": -10 },
+          "msg": "Catering Dave opens it, is baffled, forwards it to a friend \"for a laugh.\" Six weeks later it surfaces in a group chat with 200 members. The delay didn’t shrink the breach — it grew it, with your fingerprints on the silence.",
+          "tip": "Misdirected email is one of the most common data breaches there is. Reporting fast lets IT recall it, contact the recipient, and contain it. Hiding it only adds \"cover-up\" to the incident report." } },
+      { "label": "RECALL + TELL IT IMMEDIATELY",
+        "go": { "smart": 1, "d": { "sec": 10, "rep": -4 },
+          "msg": "Recall fired, IT notified, Catering Dave contacted — he deletes it unread and asks if the company needs sandwiches. Embarrassing for an hour, contained forever.",
+          "tip": "Everyone misfires an email eventually. The difference between \"incident\" and \"breach\" is how fast you raise your hand." } },
+      { "label": "EMAIL DAVE: \"PLS IGNORE THX\"",
+        "go": { "oops": 1, "d": { "sec": -8 },
+          "msg": "You’ve now sent Catering Dave a second email confirming the first one was juicy. He was going to skim it. Now he reads it like a novel.",
+          "tip": "\"Please ignore\" is a highlighter, not an eraser. Recall via IT and notify properly — quietly asking nicely is not a control." } }
+    ]
+  },
+  {
+    "id": "typo", "title": "MONDAY FINGERS", "icon": "laptop",
+    "text": "You type the company portal address from memory and hit enter. The page loads… the logo is slightly stretched. The login box is slightly off-center. The URL says <span class=\"dim\">portaI-corp.com</span>.",
+    "hint": "Capital I, not lowercase L. Typosquatters registered every fat-fingered version of the real address.",
+    "choices": [
+      { "label": "LOG IN. LOOKS FINE-ISH.",
+        "go": { "setFlag": "credsLeaked", "oops": 1, "d": { "sec": -25 },
+          "msg": "You log in. The page \"errors\" and bounces you to the real portal, where you log in again without thinking twice. That first login went somewhere else entirely, and it’s already been tried on your email.",
+          "tip": "Typosquatting sites clone real login pages on lookalike domains. A \"failed\" login that redirects you is the classic sign your password was just harvested." } },
+      { "label": "STOP. CHECK THE URL.",
+        "go": { "smart": 1, "d": { "sec": 12 },
+          "msg": "Capital-i portaI. You close it, report the domain, and type the real address very carefully, like defusing a small boring bomb.",
+          "tip": "Read URLs character by character when anything feels off — lookalike letters (I/l, 0/o, rn/m) are the entire business model." } },
+      { "label": "BOOKMARK THE REAL ONE FOREVER",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "One bookmark. You will never type that URL again, and typos can no longer hurt you. Elegant. Permanent. Free.",
+          "tip": "Bookmarks beat memory: for anything with a login, click the saved link instead of typing. Typosquatters can’t intercept a bookmark." } }
+    ]
+  },
+  {
+    "id": "popup", "title": "YOUR BROWSER SCREAMS", "icon": "bug",
+    "text": "A popup fills the screen, flashing red, with a robot voice: <span class=\"dim\">\"WINDOWS DEFENDER ALERT!! 5 VIRUSES DETECTED!! DO NOT CLOSE THIS WINDOW!! CALL MICROSOFT SUPPORT: 1-800-XXX-XXXX\"</span> It is very loud.",
+    "hint": "Microsoft doesn’t know your computer exists, and their alerts don’t come with hold music.",
+    "choices": [
+      { "label": "CALL THE NUMBER. IT SAID TO.",
+        "go": { "oops": 1, "d": { "sec": -20, "energy": -12 },
+          "msg": "\"Microsoft\" answers instantly (suspicious) and spends 40 minutes trying to get you to install a remote tool. You eventually escape, but they now call YOU twice a day forever. The popup was an ad. You were the product.",
+          "tip": "Scare popups with phone numbers are tech-support scams, start to finish. Real security warnings never tell you to call anyone." } },
+      { "label": "CLOSE THE TAB. REPORT IT.",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "Ctrl+W. The \"unstoppable virus warning\" stops, because it was a webpage. You report the site that spawned it. The office is quiet again.",
+          "tip": "If a \"system alert\" lives inside a browser tab, it’s a webpage wearing a costume. Close the tab; if it fights you, close the browser from Task Manager." } },
+      { "label": "PANIC. HOLD THE POWER BUTTON.",
+        "go": { "d": { "energy": -8 },
+          "msg": "Hard reboot. Technically effective, spiritually a fire alarm response to a scented candle. Your unsaved spreadsheet sends its regards.",
+          "tip": "It works, but closing the tab works too and keeps your work. The popup can’t touch your files — unless you call the number." } }
+    ]
+  },
+  {
+    "id": "macro", "title": "ATTACHMENT: INVOICE.DOC", "icon": "mail",
+    "text": "An email from a supplier you actually use: <span class=\"dim\">\"Please find attached invoice.\"</span> The document opens to a blurred page and a yellow bar: <span class=\"dim\">\"ENABLE MACROS to view content.\"</span>",
+    "hint": "Documents don’t need macros to be read. Malware needs macros to run.",
+    "choices": [
+      { "label": "ENABLE MACROS",
+        "go": { "setFlag": "malware", "oops": 1, "d": { "sec": -30 },
+          "msg": "The blur never clears, because there was never an invoice — the \"document\" was a delivery vehicle, and you just signed for the package. A script runs in the background with your permissions, all of them.",
+          "tip": "\"Enable macros to view\" is the oldest malware delivery trick still working. Real invoices never require it. If the yellow bar asks, the answer is no and the email goes to IT." } },
+      { "label": "CALL THE SUPPLIER TO CHECK",
+        "go": { "smart": 1, "d": { "sec": 12 },
+          "msg": "\"We didn’t send an invoice this week.\" Their email account was compromised — you’ve just alerted them to a breach they didn’t know they had. They are alarmingly grateful.",
+          "tip": "Malware often arrives from REAL compromised accounts, which beats sender-checking. When an attachment behaves oddly, verify out-of-band — you might be the one who catches the breach." } },
+      { "label": "PREVIEW IT. NEVER ENABLE.",
+        "go": { "smart": 1, "d": { "sec": 8 },
+          "msg": "Protected view shows you everything safe to show: a blurry nothing. You forward it to IT, macros still sealed, like handing over a snake in a jar.",
+          "tip": "Protected/preview mode exists exactly for this — look, don’t touch. The macro prompt is the trap; unsprung, it’s just evidence." } }
+    ]
+  },
+  {
+    "id": "photog", "title": "SMILE!", "icon": "badge",
+    "text": "A cheerful stranger with a lanyard (backwards) is photographing the planning whiteboards. \"Internal newsletter!\" they beam. The whiteboard behind them has the Q3 roadmap and — oh no — someone’s written a wifi password on it.",
+    "hint": "The newsletter is written by Grace. That is not Grace.",
+    "choices": [
+      { "label": "POSE. YOU LOOK GREAT TODAY.",
+        "go": { "oops": 1, "d": { "sec": -18 },
+          "msg": "You give them your best quarterly-report smile. They get you, the roadmap, and the wifi password in one frame. You never appear in any newsletter, because there was no newsletter.",
+          "tip": "Physical recon is real: whiteboards, screens, and desk papers photograph beautifully. Challenge unknown photographers, and never leave credentials on a wall." } },
+      { "label": "\"WHO ARE YOU WITH?\" + ESCORT",
+        "go": { "smart": 1, "d": { "sec": 14, "rep": 4 },
+          "msg": "\"Uh, the… newsletter team?\" The newsletter team is one person and she’s on leave. You walk them to reception, where their story dissolves like sugar. The whiteboard gets erased within the hour.",
+          "tip": "Anyone photographing work areas should expect to be asked who they are. Asking isn’t rude — it’s the badge system with legs." } },
+      { "label": "ERASE THE PASSWORD, SAY NOTHING",
+        "go": { "d": { "sec": 5 },
+          "msg": "You casually erase the wifi password mid-photo, like a magician’s assistant working against the magician. Half a fix — the roadmap still walks out the door.",
+          "tip": "Good instinct, incomplete play. Remove the secret AND question the stranger — physical security fails in layers, and it holds in layers too." } }
+    ]
+  },
+  {
+    "id": "train", "title": "THE 8:15 EXPRESS", "icon": "laptop",
+    "text": "Off-site client meeting. You’re on the train, laptop out, polishing the confidential merger deck. The man beside you has been reading your screen for three stops with the focus of a chess grandmaster.",
+    "hint": "That’s not nosiness posture. That’s note-taking posture.",
+    "choices": [
+      { "label": "KEEP WORKING. IT’S PUBLIC TRANSPORT, NOT PUBLIC DATA.",
+        "go": { "oops": 1, "d": { "sec": -14 },
+          "msg": "You finish the deck. He gets off at the CBD, walks into the building across from your client’s, and — you realize with slowly dawning horror — works for the competitor. He didn’t even need to hack anything. You presented to him first.",
+          "tip": "\"Shoulder surfing\" is espionage’s free tier. Real deals have leaked from train screens and airport lounges. Sensitive work waits, or gets a privacy filter." } },
+      { "label": "ANGLE AWAY + PRIVACY FILTER",
+        "go": { "smart": 1, "d": { "sec": 10, "energy": -3 },
+          "msg": "Screen angled to the window, privacy filter on — from his seat your laptop now displays an elegant black rectangle. He loses interest and reads over someone else’s shoulder instead.",
+          "tip": "Privacy filters cost $40 and defeat every shoulder-surfer ever born. If your work is confidential, your screen in public is a billboard without one." } },
+      { "label": "CLOSE IT. STARE AT SCENERY.",
+        "go": { "d": { "energy": 10 },
+          "msg": "You close the laptop and watch the world go by like a person in a film about slowing down. The deck gets finished at the office, unobserved. The scenery: pretty good.",
+          "tip": "The most secure screen is a closed one. Also the most relaxing. Rare synergy." } }
+    ]
+  },
+  {
+    "id": "exstaff", "title": "A FAMILIAR FACE", "icon": "db",
+    "text": "Marcus — left the company last month, genuinely lovely guy — messages you: <span class=\"dim\">\"Hey! My access got cut before I saved MY OWN contact list. Could you export the client database and send it over? It’s literally my contacts, IT is just slow lol\"</span>",
+    "hint": "The clients are the company’s, not his. This exact scenario is in the court records. Many times.",
+    "choices": [
+      { "label": "EXPORT IT. IT’S JUST MARCUS.",
+        "go": { "death": {
+          "cause": "exported the database for a nice guy", "title": "ESCORTED OUT",
+          "msg": "You export 4,000 client records and email them to Marcus’s gmail. Marcus’s new employer is a direct competitor, and the export logged your name at every step. Legal calls it \"data exfiltration.\" Marcus calls it \"so sorry about all this.\" Security calls it a box for your desk things.",
+          "tip": "Departed staff asking for \"their\" data is a classic exfiltration play — client lists belong to the company, and the export trail leads to whoever pressed the button. That’s you. Refer it to IT, always." } } },
+      { "label": "\"SORRY MATE — GO THROUGH IT\"",
+        "go": { "smart": 1, "d": { "sec": 12 },
+          "msg": "\"Worth a shot lol,\" Marcus replies, revealingly. You mention it to your manager, who mentions it to IT, who quietly note that Marcus’s new job is at the competitor. The friendship survives. The database also survives.",
+          "tip": "\"No, but here’s the proper channel\" protects you, the data, AND the friend from doing something career-ending. If it’s legitimate, official channels will approve it." } },
+      { "label": "STALL HIM, ASK IT QUIETLY",
+        "go": { "smart": 1, "d": { "sec": 8 },
+          "msg": "IT’s response arrives in nine seconds and contains the phrase \"absolutely not\" twice. They flag his account activity from his final week. It is… illuminating.",
+          "tip": "When a request smells wrong, asking IT first costs nothing. Insider-driven data theft usually looks exactly this friendly." } }
+    ]
+  },
+  {
+    "id": "raffle", "title": "CONGRATULATIONS!!", "icon": "gift",
+    "text": "An email bursts with confetti GIFs: <span class=\"dim\">\"{NAME}, you WON the Employee Appreciation Raffle! $500!! To process your prize, confirm your bank details and employee ID here.\"</span><br><br>You do not remember entering a raffle.",
+    "hint": "There is no raffle. There has never been a raffle. This company’s idea of appreciation is a pizza with insufficient slices.",
+    "choices": [
+      { "label": "CLAIM THE $500!!",
+        "go": { "oops": 1, "d": { "sec": -18 },
+          "msg": "You submit your bank details and employee ID to claim a prize from a raffle that doesn’t exist, run by a committee that doesn’t exist, for winners who don’t exist. One of those details was real, though: yours.",
+          "tip": "Prize scams work because wanting $500 is universal. You can’t win a raffle you never entered — and no prize ever requires your bank login." } },
+      { "label": "ASK HR: \"WHAT RAFFLE?\"",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "HR: \"What raffle?\" Exactly. They send a company-wide warning, and three colleagues quietly close the claim form they were halfway through filling in.",
+          "tip": "One question to a human kills most scams instantly. Internal-sounding prizes verify in one message to HR." } },
+      { "label": "DEMAND THE PRIZE IN PERSON, IN CASH",
+        "go": { "smart": 1, "d": { "rep": 4 },
+          "msg": "\"I’ll collect it from the prize desk on level 2 at 3pm. Cash only.\" The scammer, faced with a fictional desk on a fictional errand, never replies. You have out-fictioned them.",
+          "tip": "Scams need you to act inside THEIR process. Any demand to step outside it — in person, on a known phone number — collapses the whole script." } }
+    ]
+  },
+  {
+    "id": "crack", "title": "LICENSE EXPIRED", "icon": "laptop",
+    "text": "Deadline in 3 hours. Your design software: <span class=\"dim\">\"LICENSE EXPIRED.\"</span> A coworker slides over: \"Just grab the cracked version, everyone in my old team used it. Totally clean, trust me. Here’s the link.\"",
+    "hint": "The crack site’s top review says “worked great, ignore antivirus warning.” That’s not a review, that’s a confession.",
+    "choices": [
+      { "label": "DOWNLOAD THE CRACK",
+        "go": { "setFlag": "malware", "oops": 1, "d": { "sec": -26 },
+          "msg": "The crack works! The software runs! Also running: whatever was bundled inside the crack, which your antivirus flagged and you — per the instructions — told it to ignore. You manually disarmed your own smoke detector to let the fire in.",
+          "tip": "Cracked software is the #1 malware delivery method that victims install voluntarily. \"Disable your antivirus first\" is the punchline and the whole joke." } },
+      { "label": "ASK IT FOR A LICENSE",
+        "go": { "smart": 1, "d": { "sec": 8, "energy": -4 },
+          "msg": "IT assigns you a license from the pool in 20 minutes. Twenty minutes! The deadline survives. The urgency was real; the emergency was optional.",
+          "tip": "License problems are ticket problems, not security decisions. IT can usually fix \"expired\" faster than a crack can finish downloading." } },
+      { "label": "USE THE FREE OPEN-SOURCE ONE",
+        "go": { "smart": 1, "d": { "sec": 6, "energy": -8 },
+          "msg": "The open-source alternative has a weirder interface and a mascot that is somehow a wrench. But it’s legal, clean, and exports the file. The deadline is met with 40 minutes to spare.",
+          "tip": "Legitimate free software exists for almost everything. Get it from the official site — crack sites also fake THOSE downloads." } }
+    ]
+  },
+  {
+    "id": "charity", "title": "FROM THE CEO’S HEART", "icon": "mail", "roles": ["intern", "manager", "itadmin"],
+    "text": "Company-wide email, hours after a disaster hits the news: <span class=\"dim\">\"I’m personally organizing relief donations. Given banking delays, I’m collecting via crypto for speed. Every coin counts. — [CEO name], sent from my iPhone\"</span>",
+    "hint": "The CEO’s actual emails are written by comms and have never contained warmth or cryptocurrency.",
+    "choices": [
+      { "label": "DONATE CRYPTO. FOR THE CAUSE.",
+        "go": { "oops": 1, "d": { "sec": -14, "rep": -5 },
+          "msg": "Your donation arrives safely — in the wallet of someone who registered the lookalike domain forty minutes after the news broke. Disaster scammers are the fastest developers in the industry.",
+          "tip": "Scammers weaponize breaking news within hours, and crypto’s speed cuts both ways: irreversible for you too. Donate via established charities’ official sites, never via email links." } },
+      { "label": "CHECK WITH COMMS, DONATE PROPERLY",
+        "go": { "smart": 1, "d": { "sec": 10, "rep": 6 },
+          "msg": "Comms: \"The CEO is not collecting crypto.\" A warning goes out; you donate through the charity’s real website; the money reaches humans instead of wallets.",
+          "tip": "Verify surprising internal emails through a second channel — then donate directly at the charity’s own site so 100% of your intent arrives." } },
+      { "label": "REPLY-ALL: \"IS THIS REAL?\"",
+        "go": { "d": { "rep": -3, "sec": 4 },
+          "msg": "You reply-all to 800 people. The scam dies of exposure, but so does everyone’s inbox — 47 people also reply-all to say \"please stop replying all.\" A messy, noisy, technically-effective victory.",
+          "tip": "Right instinct, loud method. Report suspicious mail to IT or comms directly — they can warn everyone once, without the avalanche." } }
+    ]
+  },
+  {
+    "id": "sharepw", "title": "FAVOR REQUEST", "icon": "note",
+    "text": "{Boss}, from a beach, via text: <span class=\"dim\">\"Hey! Sandra needs to pull a report from my dashboard but her access is broken. Just give her YOUR password, easiest fix, I’ll authorize it. Don’t make it a whole thing 😅\"</span>",
+    "hint": "It is, unfortunately, a whole thing. Passwords are single-occupancy.",
+    "choices": [
+      { "label": "SHARE IT. IT WAS AUTHORIZED.",
+        "go": { "oops": 1, "d": { "sec": -22 },
+          "msg": "Sandra gets the report. Sandra also — weeks later, after Sandra leaves — still technically has your password, written in her notes app under \"misc.\" Everything done with your account, by anyone, forever, has your name on it.",
+          "tip": "Someone senior can authorize access; nobody can authorize sharing YOUR password — it makes every future action untraceable and yours. \"Authorized\" sharing is how audits become mysteries." } },
+      { "label": "\"NO — BUT I’LL PULL THE REPORT\"",
+        "go": { "smart": 1, "d": { "sec": 12, "rep": 4 },
+          "msg": "You run the report yourself and send it over in six minutes. Sandra’s unblocked, the boss is happy, and your password remains a population of one.",
+          "tip": "There’s almost always a way to help that isn’t credential-sharing: do the task, request delegate access, or loop in IT. Helpful and secure aren’t opposites." } },
+      { "label": "SHARE IT, CHANGE IT TONIGHT",
+        "go": { "oops": 1, "d": { "sec": -10 },
+          "msg": "A compromise, in the sense that you compromised your account for one business day. Whatever happened under your name between 2pm and tonight is a mystery you’ve pre-agreed to own.",
+          "tip": "\"Temporarily shared\" is still shared — the risk isn’t the duration, it’s the attribution. Even one hour of shared credentials makes the logs lie." } }
+    ]
+  },
+  {
+    "id": "gitleak", "title": "CASUAL BROWSING", "icon": "db",
+    "text": "Poking around the dev team’s public GitHub repo, you spot a file: <span class=\"dim\">config_backup.js</span>. Inside, in plain text: <span class=\"dim\">API_KEY = \"sk_live_…\"</span>. That’s the payment system. That’s the LIVE payment system.",
+    "hint": "Bots scan public repos for keys like this within about 60 seconds of pushing. This one’s been up for 3 days.",
+    "choices": [
+      { "label": "POST ABOUT IT ONLINE. LOL.",
+        "go": { "oops": 1, "d": { "sec": -20, "rep": -12 },
+          "msg": "\"lmao my company pushed live payment keys to a public repo\" gets 40,000 views, several of which belong to people who immediately try the key. You’ve turned a quiet leak into a public invitation with a countdown.",
+          "tip": "Publicly disclosing a live vulnerability before it’s fixed hands it to attackers gift-wrapped. Report first, joke never — or at least joke after rotation." } },
+      { "label": "TELL THE DEV LEAD IMMEDIATELY",
+        "go": { "smart": 1, "d": { "sec": 15, "rep": 8 },
+          "msg": "The key is revoked in eleven minutes and the repo scrubbed. The dev lead buys you a coffee and speaks of you, briefly, with something approaching respect. The audit finds the key was tried by bots — four minutes after revocation.",
+          "tip": "Exposed keys are race conditions: reporter vs. scanner bots. Fast, quiet, direct reporting wins the race. Secrets never belong in repos — that’s what vaults are for." } },
+      { "label": "NOT MY REPO, NOT MY PROBLEM",
+        "go": { "oops": 1, "d": { "sec": -12 },
+          "msg": "You close the tab. Two weeks later, \"unusual payment activity\" locks the whole system for a day, and you sit in the incident review saying nothing, radiating a very specific silence.",
+          "tip": "Security is see-something-say-something. You don’t need to fix it or understand it — just route it to someone who can, today." } }
+    ]
+  },
+  {
+    "id": "simswap", "title": "NO SERVICE", "icon": "phone",
+    "cond": { "anyFlag": ["credsLeaked", "postedQuiz"] },
+    "text": "Your phone abruptly shows <span class=\"dim\">NO SERVICE</span> in the middle of the office. Wifi still works — and over it, emails begin arriving: <span class=\"dim\">\"Your password reset code is…\" \"Your password was changed…\"</span> You didn’t request any of this.",
+    "hint": "Someone’s hijacked your number — a SIM swap. Every SMS code now goes to THEIR phone. The clock is running.",
+    "choices": [
+      { "label": "CALL THE CARRIER FROM A DESK PHONE. NOW.",
+        "go": { "smart": 1, "d": { "sec": 18, "energy": -10 },
+          "msg": "The carrier confirms someone \"verified\" as you an hour ago — with details matching what leaked earlier this week — and moved your number to their SIM. They reverse it, lock the account with a port-out PIN, and you spend a frantic hour resetting passwords. Exhausting. Successful.",
+          "tip": "SIM swaps hijack your number to intercept SMS codes — built from leaked personal data. Sudden NO SERVICE plus reset emails means minutes matter: call the carrier from any other phone, then rotate passwords. App-based MFA beats SMS for exactly this reason." } },
+      { "label": "\"WEIRD. PROBABLY A TOWER THING.\"",
+        "go": { "oops": 1, "d": { "sec": -30 },
+          "msg": "You wait for the tower to fix itself. The tower is fine. By 4pm, \"you\" have reset your email, and your email has reset everything else, like dominoes made of your accounts. Recovery takes weeks and several extremely humbling phone calls.",
+          "tip": "Legit outages don’t come with password-reset notifications. NO SERVICE + reset emails = active account takeover in progress. React like it’s a fire, because it is." } }
+    ]
+  },
+  {
+    "id": "shred", "title": "BY THE RECYCLING", "icon": "note",
+    "text": "Next to the recycling bins: a cardboard box, overflowing with paper, labeled in marker: <span class=\"dim\">\"HR — TO SHRED\"</span>. It has been sitting there since at least yesterday. The top page has someone’s salary on it.",
+    "choices": [
+      { "label": "TIP IT INTO RECYCLING. HELPING!",
+        "go": { "oops": 1, "d": { "sec": -12 },
+          "msg": "Efficient! The salary reviews, disciplinary letters, and medical certificates are now loose in a public recycling stream, one dumpster-dive away from being a very bad news story. The label said shred. Recycling is not shredding.",
+          "tip": "\"Dumpster diving\" is real reconnaissance — unshredded HR paper is a jackpot. TO SHRED means the secure console or the shredder, never the open bin." } },
+      { "label": "WALK IT TO THE SHRED CONSOLE",
+        "go": { "smart": 1, "d": { "sec": 10, "rep": 4 },
+          "msg": "You carry the box to the locked shred console and post it through, page by satisfying page. HR, informed, goes several shades of pale and thanks you twice.",
+          "tip": "Physical documents breach companies too. If confidential paper is sitting unattended, secure it and tell the owner — the fix costs five minutes." } },
+      { "label": "HAVE A LITTLE READ FIRST",
+        "go": { "oops": 1, "d": { "rep": -10 },
+          "msg": "You learn three salaries and one disciplinary outcome. This information sits in your head like a stone. You mention none of it and somehow everyone can tell you know things.",
+          "tip": "Even authorized-adjacent snooping is snooping. Confidential means confidential from you too — secure it unread." } }
+    ]
+  },
+  {
+    "id": "tray", "title": "ON THE PRINTER", "icon": "printer",
+    "text": "Collecting your printout, you find someone else’s underneath, fresh and warm: <span class=\"dim\">\"PROJECT SUNSET — PROPOSED RESTRUCTURE — STRICTLY CONFIDENTIAL.\"</span> It is a list of roles. Some have strikethrough.",
+    "hint": "Left on the shared printer. The confidential document delivery system with a public tray.",
+    "choices": [
+      { "label": "READ IT. ALL OF IT. TWICE.",
+        "go": { "oops": 1, "d": { "rep": -14 },
+          "msg": "You now know things you cannot unknow and cannot mention. At lunch you say \"big changes coming, that’s all I’ll say\" to seem interesting, and by 3pm the rumor has mutated, spread to two floors, and been traced — accurately — back to you.",
+          "tip": "Found confidential material is a trust test with your name on the log. Reading it makes you a leak vector; sharing hints makes you the leak." } },
+      { "label": "DELIVER IT FACE-DOWN TO ITS OWNER",
+        "go": { "smart": 1, "d": { "sec": 8, "rep": 8 },
+          "msg": "The header names the owner. You hand it over face-down: \"This was on the printer.\" Their face does the entire five stages of grief in two seconds. You are now considered dangerously trustworthy.",
+          "tip": "Face-down, direct, unmentioned — the gold standard for found documents. Also: secure-print-release exists so pages only print when you badge in. Suggest it." } },
+      { "label": "LEAVE IT. NOT YOUR PAGES.",
+        "go": { "oops": 1, "d": { "sec": -8 },
+          "msg": "You leave it in the tray, where four more people find it before the owner does. By Friday everyone knows, nobody admits it, and the printer gains a reputation as \"the leaky one,\" which is unfair to the printer.",
+          "tip": "A confidential page in a shared tray leaks by default — walking away just chooses who finds it next. Secure it or deliver it." } }
+    ]
+  },
+  {
+    "id": "freegame", "title": "LUNCH BREAK", "icon": "bug",
+    "text": "Lunch. An ad appears: <span class=\"dim\">\"FISH TYCOON DELUXE — 100% FREE! No.1 relaxing game! ⭐⭐⭐⭐⭐\"</span> Your work laptop is right there. The fish look so peaceful.",
+    "hint": "It’s “free” at the price of one (1) browser homepage, three (3) toolbars, and your search history.",
+    "choices": [
+      { "label": "INSTALL FISH TYCOON DELUXE",
+        "go": { "setFlag": "adware", "oops": 1, "d": { "sec": -15 },
+          "msg": "The fish ARE relaxing. Less relaxing: your browser homepage is now \"SearchZone Plus,\" a toolbar you cannot name has appeared, and something called \"FishHelper Updater\" runs at startup forever. The aquarium came with roommates.",
+          "tip": "Free games on work machines bundle adware and worse — and a compromised work laptop is a company problem. Personal downloads belong on personal devices." } },
+      { "label": "PLAY ON YOUR OWN PHONE",
+        "go": { "smart": 1, "d": { "energy": 8 },
+          "msg": "Fish acquired, on your own device, from the official app store. The virtual guppies thrive. The work laptop remains a place of business, untainted by aquaculture.",
+          "tip": "Right game, right device. Official app stores aren’t perfect, but they beat \"FREE download\" ads by a nautical mile." } },
+      { "label": "GO OUTSIDE. TOUCH GRASS.",
+        "go": { "d": { "energy": 12 },
+          "msg": "You take an actual walk in actual sunlight. A real bird does something interesting. You return weirdly refreshed, having played the original open-world game.",
+          "tip": "No security tip. The bird was free and contained no adware." } }
+    ]
+  },
+  {
+    "id": "airdrop", "title": "INCOMING FILE", "icon": "cable",
+    "text": "Your phone lights up: <span class=\"dim\">\"iPhone (Unknown)\" would like to share \"budget_final_FINAL_v2.xlsx\"</span>. You don’t recognize the device. You are also, magnetically, curious about the budget.",
+    "hint": "Your file sharing is set to “Everyone.” Someone within 10 meters is fishing.",
+    "choices": [
+      { "label": "ACCEPT. FREE BUDGET.",
+        "go": { "oops": 1, "d": { "sec": -12 },
+          "msg": "The \"spreadsheet\" is a shortcut file that opens a phishing page styled as a cloud login. You close it in time — probably — but somewhere nearby, someone watched you take the bait and is now mapping who else will.",
+          "tip": "Unsolicited file drops are proximity phishing — the sender is in the room or very near it. Never open files from unknown devices." } },
+      { "label": "DECLINE + SET TO \"CONTACTS ONLY\"",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "Declined, and receiving set to contacts only. Your phone vanishes from the stranger’s target list mid-hunt. Somewhere nearby, mild frustration.",
+          "tip": "Sharing set to \"Everyone\" makes you visible to every device in range. \"Contacts only\" or off — there’s no third option worth having." } },
+      { "label": "LOOK AROUND FOR THE SENDER",
+        "go": { "d": { "sec": 5, "energy": -4 },
+          "msg": "You scan the café like a detective. Three people are on phones. One avoids your gaze a half-second too long. You decline the file while maintaining eye contact. Nothing is proven. A message is sent anyway.",
+          "tip": "Intimidation is not a security control, but declining is. Report repeated attempts — in an office, that’s someone probing staff devices." } }
+    ]
+  },
+  {
+    "id": "journalist", "title": "FRIENDLY CALL", "icon": "phone",
+    "text": "\"Hi! I’m writing an industry piece — nothing formal! Just background. So, that unreleased project… NIGHTJAR, is it? How’s the timeline going? Off the record, obviously.\"",
+    "hint": "“Off the record” is an agreement journalists honor. It is also two words anyone can say on a phone.",
+    "choices": [
+      { "label": "CHAT AWAY. IT’S OFF THE RECORD.",
+        "go": { "oops": 1, "d": { "rep": -18, "sec": -8 },
+          "msg": "You confirm the name, the delay, and — flattered by the listening — the supplier issue. Wednesday, it’s all published, attributed to \"a source inside the company.\" There are four people it could be. Everyone correctly guesses which one talks this much.",
+          "tip": "Confirming, denying, or \"just background\" all leak — even the project NAME was confidential. Anything you say may be quoted, \"off the record\" or not, and callers may not be journalists at all." } },
+      { "label": "\"YOU’LL WANT OUR PRESS OFFICE\"",
+        "go": { "smart": 1, "d": { "sec": 10, "rep": 5 },
+          "msg": "You give them the press office email and precisely nothing else. \"Worth a try,\" they say, cheerfully. It always is. That’s why the press office exists.",
+          "tip": "One sentence handles every media call: name, press office, goodbye. Deciding what’s shareable is someone’s whole job — and it isn’t yours." } },
+      { "label": "\"NIGHTJAR? NEVER HEARD OF IT.\"",
+        "go": { "d": { "sec": 4, "rep": -3 },
+          "msg": "A denial so quick and so specific it functions as a confirmation. \"Interesting,\" they say, audibly writing. You have communicated everything by communicating nothing badly.",
+          "tip": "Denying a specific name confirms the name exists. \"You’ll want our press office\" reveals nothing — it’s the only line that doesn’t leak." } }
+    ]
+  },
+  {
+    "id": "docusign", "title": "SIGNATURE REQUESTED", "icon": "mail",
+    "text": "Email: <span class=\"dim\">\"DocuSign: The document ‘Updated Remote Work Policy’ is awaiting your signature. REVIEW DOCUMENT\"</span><br><br>HR did mention a policy update. Recently. Ish.",
+    "hint": "Real e-sign emails include the sender’s name and a security code. This one includes vibes.",
+    "choices": [
+      { "label": "CLICK, LOG IN, SIGN",
+        "go": { "setFlag": "credsLeaked", "oops": 1, "d": { "sec": -24 },
+          "msg": "The \"review\" page asks for your work email login — to \"verify your identity\" — then shows a generic PDF. You signed nothing. You handed over your password to a costume, and the costume said thank you.",
+          "tip": "Fake e-signature emails are top-tier credential phishing because signing feels routine. Real ones never require your WORK password — when in doubt, go to the e-sign service directly, not via the email." } },
+      { "label": "ASK HR IF THEY SENT IT",
+        "go": { "smart": 1, "d": { "sec": 12 },
+          "msg": "HR: \"Policy update’s not out till next month — that’s not ours.\" IT blocks the sender; the warning goes company-wide; you get a \"good catch\" with an exclamation mark, which from HR is basically a parade.",
+          "tip": "Attackers time fake documents to real events — policy season, tax season, review season. One message to the supposed sender settles it." } },
+      { "label": "HOVER THE BUTTON FIRST",
+        "go": { "smart": 1, "d": { "sec": 10 },
+          "msg": "The \"REVIEW DOCUMENT\" button points to <span class=\"dim\">docusign-secure.review-portal.cc</span>, a domain assembled from trustworthy words by someone untrustworthy. Reported and deleted with prejudice.",
+          "tip": "Hovering reveals the real destination before you commit. Legit services link to their own domain — word-salad lookalikes are the giveaway." } }
+    ]
+  },
+  {
+    "id": "kitchen", "title": "THE KITCHEN COLD WAR", "icon": "note",
+    "text": "A new note on the office fridge, in aggressive Comic Sans: <span class=\"dim\">\"To WHOEVER keeps microwaving FISH: we KNOW it’s you. This is your FINAL warning. — Concerned Colleagues\"</span><br><br>It was you. It has always been you.",
+    "choices": [
+      { "label": "MICROWAVE FISH AGAIN. TODAY. DEFIANT.",
+        "go": { "d": { "energy": 8, "rep": -10 },
+          "msg": "The salmon rotates. The smell colonizes two floors. Someone unplugs the microwave WHILE IT RUNS. You eat your fish in the stairwell like an outlaw, warm and unrepentant and alone.",
+          "tip": "No security tip. Some threats come from inside the building, and today that threat is you." } },
+      { "label": "ADD A COUNTER-NOTE, ANONYMOUS",
+        "go": { "d": { "energy": -4, "rep": 2 },
+          "msg": "\"Perhaps the REAL smell is judgment,\" your note reads. By 3pm there are six notes, two laminated, one citing the employee handbook. The fridge is now a debate stage. Nobody suspects you. The perfect crime continues.",
+          "tip": "No security tip — though anonymous notes escalate exactly like reply-all threads, and end the same way: laminated." } },
+      { "label": "RETIRE THE FISH. EAT SANDWICHES.",
+        "go": { "d": { "energy": 4, "rep": 6 },
+          "msg": "You bring sandwiches all week. The notes stop. Peace returns. Months from now, you will microwave one final fish on your last day, as a signature. But for now: statesmanship.",
+          "tip": "No security tip. Sometimes de-escalation is just sandwiches." } }
+    ]
+  },
+  {
+    "id": "ceoclone", "title": "YOUR ASSISTANT, PALE", "icon": "phone", "roles": ["ceo"],
+    "text": "Your EA appears at the door, phone in hand. “Three staff just got calls from… you. Your voice. Asking them to buy gift cards for a ‘client emergency.’ Accounts already bought $400 worth.”<br><br>Somewhere out there, an AI is doing your accent.",
+    "hint": "You did four podcasts and a keynote this year. That’s a training dataset.",
+    "choices": [
+      { "label": "COMPANY-WIDE ALERT + CODE WORD",
+        "go": { "smart": 1, "d": { "sec": 14, "rep": 6 },
+          "msg": "All-staff email in nine minutes: “I will never ask for gift cards. Voice requests for money get verified by calling my office — no exceptions, including me.” You set a verification code word with finance. The clone’s next three calls die on arrival.",
+          "tip": "Executives are cloned BECAUSE staff obey their voice. The fix is procedural: a standing rule that no voice alone — even yours — moves money, plus an out-of-band verification step." } },
+      { "label": "“STAFF SHOULD KNOW BETTER”",
+        "go": { "oops": 1, "d": { "sec": -18, "rep": -8 },
+          "msg": "You decide it’s a training issue, not a you issue. The clone keeps calling. By Thursday it has asked payroll for “a small favor” and reception for the wifi password, and everyone who complies believes they’re helping YOU.",
+          "tip": "When an executive is being impersonated, silence transfers the risk to staff. The impersonated person warning everyone loudly is the single strongest defense." } },
+      { "label": "RECORD A VIDEO REBUTTAL",
+        "go": { "oops": 1, "d": { "rep": 4, "sec": -8 },
+          "msg": "You record a three-minute address about the fake calls — crisp audio, great lighting, published everywhere. The scammers download it immediately. Their clone of you just got a free upgrade, and it thanks you in your own voice.",
+          "tip": "Every minute of clean public audio improves the clone. Warn in writing; save the speeches. And yes, this trade-off is real for anyone with a podcast." } }
+    ]
+  },
+  {
+    "id": "ceowhale", "title": "A VERY PERSONAL EMAIL", "icon": "mail", "roles": ["ceo"],
+    "text": "From “the law firm handling the acquisition”:<br><span class=\"dim\">“Following your round at Royghton on Saturday (how’s the 14 handicap treating you?), and ahead of the school run — congrats on Milly’s science prize — please review the attached BOARD MINUTES before tomorrow. Password-protected for your eyes only.”</span>",
+    "hint": "Your golf club posts results. The school posted the prize. The “minutes” need your login to open. This email cost them a week of research — you’re worth it.",
+    "choices": [
+      { "label": "OPEN THE MINUTES",
+        "go": { "setFlag": "credsLeaked", "oops": 1, "d": { "sec": -30 },
+          "msg": "The “protected document” wants your executive login to decrypt. You enter it. The document is blank. Your credentials — the ones with access to everything — are not blank; they’re in someone’s hands, being tried on the board portal right now.",
+          "tip": "“Whaling” targets executives with researched, personal detail scraped from public sources. The more an email knows about your weekend, the MORE suspicious it should be, not less." } },
+      { "label": "FORWARD TO SECURITY, UNTOUCHED",
+        "go": { "smart": 1, "d": { "sec": 12 },
+          "msg": "Security traces it: registered domain, nine days old; the “partner” who signed it retired in 2019. They’re impressed by the research and mildly horrified by your golf club’s public results page, which they suggest you leave.",
+          "tip": "Executives should assume tailored attacks are constant. Route anything unexpected through security — that’s not weakness, that’s what the department is for." } },
+      { "label": "REPLY FROM PERSONAL GMAIL",
+        "go": { "oops": 1, "d": { "sec": -12 },
+          "msg": "You reply “Who is this?” from your personal account — gifting them a live, unmonitored channel straight to you, outside every company filter. They will use it. Politely. Patiently. Repeatedly.",
+          "tip": "Never move a suspicious conversation to personal channels — that’s exactly where attackers want you: no security team watching, no logs, just you." } }
+    ]
+  },
+  {
+    "id": "internlogin", "title": "ACCESS DENIED (STILL)", "icon": "badge", "roles": ["intern"],
+    "text": "Week three of the internship. Your system access request is “processing.” You cannot open the one folder your entire project lives in. A kind senior dev slides over: “Ugh, just use my login. Everyone does it. Here —” and puts a sticky note on your desk.",
+    "hint": "Everyone does not do it. And the folder logs every action under the account that opened it — which would be theirs, done by you.",
+    "choices": [
+      { "label": "USE IT ALL WEEK. FINALLY, PRODUCTIVITY.",
+        "go": { "oops": 1, "d": { "sec": -20 },
+          "msg": "You fly through the project as “dave.chen”. Then something breaks in a folder you visited, the audit points at Dave, Dave points at you, and the phrase “the intern had my password” gets said in a meeting with HR present. Nobody involved enjoys the meeting.",
+          "tip": "Shared credentials destroy accountability in both directions — you inherit their access, they inherit your mistakes. Interns are especially exposed: no history, no benefit of the doubt." } },
+      { "label": "REFUSE + ESCALATE THE TICKET",
+        "go": { "smart": 1, "d": { "sec": 10, "rep": 5 },
+          "msg": "You decline the sticky note, then email IT with your manager CC’d: “blocked three weeks, project at risk.” Access appears in four hours. It turns out tickets move when someone senior is watching them.",
+          "tip": "The fix for slow access is escalation, not borrowed passwords. CC the person whose project is blocked — bureaucracy responds to visibility." } },
+      { "label": "USE IT ONCE. JUST FOR ONE FILE.",
+        "go": { "oops": 1, "d": { "sec": -10 },
+          "msg": "Just once. Except the session stays logged in, and Tuesday-you uses it “just once” again, and by Friday it’s simply how you work. There is no such thing as using someone’s password once. There is only the first time.",
+          "tip": "“Just once” is how every credential-sharing habit starts. The one-time exception and the policy violation are the same act." } }
+    ]
+  },
+  {
+    "id": "adminmfa", "title": "THE VP OF SALES HAS OPINIONS", "icon": "phone", "roles": ["itadmin"],
+    "text": "The VP of Sales calls you directly. “Your MFA thing locked two reps out during a client demo. It’s costing us DEALS. Turn it off for my team — I’ll take full responsibility. I’m telling you, not asking.”",
+    "hint": "He cannot, in fact, take responsibility for a breach. That’s not how breaches, or responsibility, work.",
+    "choices": [
+      { "label": "DISABLE IT FOR SALES",
+        "go": { "oops": 1, "d": { "sec": -28 },
+          "msg": "You carve out the exception. Sales is thrilled for eleven days — until a rep’s reused password shows up in a breach dump and, with no MFA to stop it, someone walks straight into the CRM and exports the pipeline. The VP’s “full responsibility” turns out to be a forwarded email with you on it.",
+          "tip": "MFA exceptions are the holes attackers look for first — and admin-made exceptions carry the admin’s name forever. Loud stakeholders don’t change the threat model." } },
+      { "label": "SHOW HIM THE NUMBERS",
+        "go": { "smart": 1, "d": { "sec": 12, "rep": 4 },
+          "msg": "You reply with three lines: blocked sign-in attempts on his own team this month (114), the cost of the last industry CRM breach, and an offer to fix the demo-day problem properly. He reads it, goes quiet, and forwards it to his team titled “why IT says no.”",
+          "tip": "“No” lands better as data. Most MFA resistance is a workflow complaint wearing a policy demand — answer the workflow, keep the control." } },
+      { "label": "FIX THE FRICTION INSTEAD",
+        "go": { "smart": 1, "d": { "sec": 10, "energy": -6 },
+          "msg": "You set the sales team up with passkeys and remembered devices — sign-in drops from 40 seconds of fury to one thumbprint. The VP declares victory over IT. You let him. The control stays; only the annoyance died.",
+          "tip": "The strongest security is the kind people stop noticing. Passkeys and device trust keep MFA’s protection while deleting the friction that fuels demands to remove it." } }
+    ]
+  },
+  {
+    "id": "mgrclicker", "title": "A QUIET CONFESSION", "icon": "mail", "roles": ["manager"],
+    "text": "One of your reports appears at your desk, speaking at whisper volume. “So… that invoice email from this morning. I clicked it. And typed my password. It looked SO real. Am I fired? Please don’t tell anyone.”",
+    "hint": "The clock started when they typed the password. What you do in the next five minutes matters more than what they did.",
+    "choices": [
+      { "label": "REPORT IT TOGETHER, RIGHT NOW",
+        "go": { "smart": 1, "d": { "sec": 15, "rep": 6 },
+          "msg": "You walk to IT together. Password rotated, sessions killed, sender blocked — total elapsed time: eleven minutes; total damage: zero. Your report tells the whole team how painless it was. Next month, someone else reports their own click within 90 seconds.",
+          "tip": "A team’s real security level is how fast people admit mistakes. Managers set that speed: make the first confession painless and you’ve bought every future one." } },
+      { "label": "ANNOUNCE IT AT STANDUP AS A “LESSON”",
+        "go": { "oops": 1, "d": { "sec": -10, "rep": -6 },
+          "msg": "You handle the technical side, then narrate the whole thing at standup with the clicker’s name attached, “so we all learn.” Everyone learns. Specifically, everyone learns to never, ever tell you about a click again. The next incident on your team will be reported by the attackers.",
+          "tip": "Public shaming converts honest reporters into silent ones — and silent clicks become breaches. Fix loudly, teach generically, never name the confessor." } },
+      { "label": "“LET’S KEEP THIS BETWEEN US”",
+        "go": { "oops": 1, "d": { "sec": -22 },
+          "msg": "You quietly have them change their password and agree it never happened. Except the attacker used the password within minutes — there’s already a hidden inbox rule and a live session you didn’t kill, working nights inside an account IT doesn’t know to watch.",
+          "tip": "A password change alone doesn’t evict an attacker — active sessions, app tokens, and mail rules survive it. Compromise response needs IT, every time, however kind the cover-up feels." } }
+    ]
+  }
+]
