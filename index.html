@@ -6,6 +6,7 @@
 <title>the phishing trail</title>
 <meta name="theme-color" content="#000000">
 <meta name="description" content="Survive the corporate work week. Do not click the link.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="THE PHISHING TRAIL">
@@ -871,7 +872,7 @@ ROLES.forEach(function(r,i){
   b.innerHTML='<span class="key">'+(i+1)+'.</span>'+r.name+'<span class="roleDesc">'+r.desc+'</span>';
   b.onclick=function(){
     sClick();
-    var n=($('nameInput').value||'').trim().toUpperCase() || 'EMPLOYEE #4';
+    var n=($('nameInput').value||'').replace(/[<>&]/g,'').trim().toUpperCase() || 'EMPLOYEE #4';
     newGame(n, r);
     show('travelPanel');
     startWeek();
